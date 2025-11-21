@@ -365,12 +365,9 @@ def process_demolition_data(assessment_file, permit_file):
         }
 
     # This summary block is NOT filtered and is used for the RAZE Lifespan Summary chart
-    sb_positive = count_co(lifespan_df_all_cleaned[
-                               (lifespan_df_all_cleaned['worktype'] == 'RAZE') &
-                               (lifespan_df_all_cleaned['lifespan'] > 0)
-                               ])
-    sb_zero = count_co(lifespan_df_all_cleaned[zero_mask_all])
-    sb_negative = count_co(lifespan_df_all_cleaned[neg_mask_all])
+    sb_positive = count_co(lifespan_df[lifespan_df['worktype'] == 'RAZE'])
+    sb_zero = count_co(lifespan_df_all_cleaned[zero_mask_all].dropna(subset=['y_latitude', 'x_longitude']))
+    sb_negative = count_co(lifespan_df_all_cleaned[neg_mask_all].dropna(subset=['y_latitude', 'x_longitude']))
     sb_total = {
         'close': sb_positive['close'] + sb_zero['close'] + sb_negative['close'],
         'open': sb_positive['open'] + sb_zero['open'] + sb_negative['open'],
