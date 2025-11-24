@@ -4,7 +4,7 @@ An interactive web-based visualization dashboard for analyzing building demoliti
 
 ## Live Demo
 
-[View Live Dashboard](https://samueeelsiu.github.io/Lifespan-Boston/)
+[View Live Dashboard](https://samueeelsiu.github.io/Boston-RAZE-permits/)
 
 
 ## Table of Contents
