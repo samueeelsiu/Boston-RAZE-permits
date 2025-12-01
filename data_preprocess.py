@@ -71,12 +71,12 @@ def process_demolition_data(assessment_file, permit_file):
     # --- 2. Prepare property assessment data ---
     print("Processing property assessment data...")
     # Load more columns to identify buildings correctly
-    assessment_cols = ['PID', 'CM_ID', 'YR_BUILT', 'Zoning_District', 'Zoning_Subdistrict', 'STRUCTURE_CLASS']
+    assessment_cols = ['PID', 'CM_ID', 'YR_BUILT', 'Zoning_District', 'Zoning_Subdistrict', 'STRUCTURE_CLASS', 'GROSS_AREA']
 
     if 'CM_ID' not in prop_ass_df.columns:
         print("Warning: 'CM_ID' not found in assessment data. Condominium logic will be skipped.")
         # Still include zoning columns
-        assessment_cols = ['PID', 'YR_BUILT', 'Zoning_District', 'Zoning_Subdistrict', 'STRUCTURE_CLASS']
+        assessment_cols = ['PID', 'YR_BUILT', 'Zoning_District', 'Zoning_Subdistrict', 'STRUCTURE_CLASS', 'GROSS_AREA']
 
     assessment_data = prop_ass_df[assessment_cols].copy()
     assessment_data.dropna(subset=['YR_BUILT'], inplace=True)
@@ -124,7 +124,8 @@ def process_demolition_data(assessment_file, permit_file):
         build_year=('YR_BUILT', 'min'),
         Zoning_District=('Zoning_District', 'first'),
         Zoning_Subdistrict=('Zoning_Subdistrict', 'first'),
-        structure_class=('structure_class_desc', 'first')
+        structure_class=('structure_class_desc', 'first'),
+        gross_area=('GROSS_AREA', 'sum')
     ).reset_index()
 
     # --- NEW: Calculate current building age distribution (5-year and 10-year) ---
@@ -383,10 +384,18 @@ def process_demolition_data(assessment_file, permit_file):
 
             for i in range(0, max_bin_age, bin_width):
                 label = f"{i}-{i + bin_width}"
-                # Count buildings in this bin
-                count = len(cls_df[(cls_df['lifespan'] >= i) & (cls_df['lifespan'] < i + bin_width)])
+
+
+                subset = cls_df[(cls_df['lifespan'] >= i) & (cls_df['lifespan'] < i + bin_width)]
+                count = len(subset)
+
                 if count > 0:
-                    bins_data[label] = count
+                    area = int(subset['gross_area'].fillna(0).sum())
+
+                    bins_data[label] = {
+                        'count': count,
+                        'area': area
+                    }
 
             if bins_data:
                 structure_heatmap_data[bin_key][str(struct_cls)] = bins_data

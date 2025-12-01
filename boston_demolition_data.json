@@ -2,255 +2,906 @@
   "structure_class_heatmap": {
     "bin_5": {
       "Wood/Frame": {
-        "0-5": 9,
-        "5-10": 6,
-        "10-15": 1,
-        "15-20": 1,
-        "25-30": 3,
-        "30-35": 5,
-        "35-40": 2,
-        "40-45": 3,
-        "45-50": 4,
-        "50-55": 2,
-        "55-60": 8,
-        "60-65": 8,
-        "65-70": 5,
-        "70-75": 13,
-        "75-80": 8,
-        "80-85": 13,
-        "85-90": 14,
-        "90-95": 24,
-        "95-100": 30,
-        "100-105": 25,
-        "105-110": 25,
-        "110-115": 45,
-        "115-120": 36,
-        "120-125": 23,
-        "125-130": 5,
-        "130-135": 4,
-        "135-140": 2,
-        "175-180": 1
+        "0-5": {
+          "count": 9,
+          "area": 640887
+        },
+        "5-10": {
+          "count": 6,
+          "area": 52333
+        },
+        "10-15": {
+          "count": 1,
+          "area": 41760
+        },
+        "15-20": {
+          "count": 1,
+          "area": 0
+        },
+        "25-30": {
+          "count": 3,
+          "area": 21362
+        },
+        "30-35": {
+          "count": 5,
+          "area": 412614
+        },
+        "35-40": {
+          "count": 2,
+          "area": 51884
+        },
+        "40-45": {
+          "count": 3,
+          "area": 45636
+        },
+        "45-50": {
+          "count": 4,
+          "area": 113892
+        },
+        "50-55": {
+          "count": 2,
+          "area": 10804
+        },
+        "55-60": {
+          "count": 8,
+          "area": 217316
+        },
+        "60-65": {
+          "count": 8,
+          "area": 439179
+        },
+        "65-70": {
+          "count": 5,
+          "area": 220583
+        },
+        "70-75": {
+          "count": 13,
+          "area": 304021
+        },
+        "75-80": {
+          "count": 8,
+          "area": 97611
+        },
+        "80-85": {
+          "count": 13,
+          "area": 111743
+        },
+        "85-90": {
+          "count": 14,
+          "area": 103687
+        },
+        "90-95": {
+          "count": 24,
+          "area": 180196
+        },
+        "95-100": {
+          "count": 30,
+          "area": 306073
+        },
+        "100-105": {
+          "count": 25,
+          "area": 175939
+        },
+        "105-110": {
+          "count": 25,
+          "area": 196811
+        },
+        "110-115": {
+          "count": 45,
+          "area": 289286
+        },
+        "115-120": {
+          "count": 36,
+          "area": 456065
+        },
+        "120-125": {
+          "count": 23,
+          "area": 139777
+        },
+        "125-130": {
+          "count": 5,
+          "area": 30582
+        },
+        "130-135": {
+          "count": 4,
+          "area": 40163
+        },
+        "135-140": {
+          "count": 2,
+          "area": 12225
+        },
+        "175-180": {
+          "count": 1,
+          "area": 8800
+        }
       },
       "Brick/Concrete": {
-        "0-5": 5,
-        "5-10": 14,
-        "10-15": 14,
-        "15-20": 14,
-        "20-25": 15,
-        "25-30": 26,
-        "30-35": 32,
-        "35-40": 12,
-        "40-45": 26,
-        "45-50": 29,
-        "50-55": 35,
-        "55-60": 37,
-        "60-65": 33,
-        "65-70": 23,
-        "70-75": 44,
-        "75-80": 25,
-        "80-85": 57,
-        "85-90": 55,
-        "90-95": 140,
-        "95-100": 96,
-        "100-105": 127,
-        "105-110": 103,
-        "110-115": 273,
-        "115-120": 293,
-        "120-125": 170,
-        "125-130": 35,
-        "135-140": 2,
-        "140-145": 2
+        "0-5": {
+          "count": 5,
+          "area": 669711
+        },
+        "5-10": {
+          "count": 14,
+          "area": 4542158
+        },
+        "10-15": {
+          "count": 14,
+          "area": 2465579
+        },
+        "15-20": {
+          "count": 14,
+          "area": 1975829
+        },
+        "20-25": {
+          "count": 15,
+          "area": 1362377
+        },
+        "25-30": {
+          "count": 26,
+          "area": 1609341
+        },
+        "30-35": {
+          "count": 32,
+          "area": 680580
+        },
+        "35-40": {
+          "count": 12,
+          "area": 591739
+        },
+        "40-45": {
+          "count": 26,
+          "area": 5168006
+        },
+        "45-50": {
+          "count": 29,
+          "area": 2756225
+        },
+        "50-55": {
+          "count": 35,
+          "area": 9807977
+        },
+        "55-60": {
+          "count": 37,
+          "area": 23920847
+        },
+        "60-65": {
+          "count": 33,
+          "area": 13748579
+        },
+        "65-70": {
+          "count": 23,
+          "area": 2566259
+        },
+        "70-75": {
+          "count": 44,
+          "area": 2982230
+        },
+        "75-80": {
+          "count": 25,
+          "area": 664188
+        },
+        "80-85": {
+          "count": 57,
+          "area": 1316063
+        },
+        "85-90": {
+          "count": 55,
+          "area": 7242849
+        },
+        "90-95": {
+          "count": 140,
+          "area": 12130130
+        },
+        "95-100": {
+          "count": 96,
+          "area": 6313858
+        },
+        "100-105": {
+          "count": 127,
+          "area": 6309679
+        },
+        "105-110": {
+          "count": 103,
+          "area": 8205882
+        },
+        "110-115": {
+          "count": 273,
+          "area": 34340262
+        },
+        "115-120": {
+          "count": 293,
+          "area": 21025874
+        },
+        "120-125": {
+          "count": 170,
+          "area": 12337805
+        },
+        "125-130": {
+          "count": 35,
+          "area": 6082402
+        },
+        "135-140": {
+          "count": 2,
+          "area": 123890
+        },
+        "140-145": {
+          "count": 2,
+          "area": 10802
+        }
       },
       "Metal": {
-        "0-5": 2,
-        "15-20": 1,
-        "40-45": 1,
-        "45-50": 1,
-        "70-75": 1,
-        "75-80": 2,
-        "90-95": 1,
-        "125-130": 1
+        "0-5": {
+          "count": 2,
+          "area": 9700
+        },
+        "15-20": {
+          "count": 1,
+          "area": 5040
+        },
+        "40-45": {
+          "count": 1,
+          "area": 2352
+        },
+        "45-50": {
+          "count": 1,
+          "area": 6275
+        },
+        "70-75": {
+          "count": 1,
+          "area": 36574
+        },
+        "75-80": {
+          "count": 2,
+          "area": 46574
+        },
+        "90-95": {
+          "count": 1,
+          "area": 0
+        },
+        "125-130": {
+          "count": 1,
+          "area": 5624
+        }
       },
       "Reinforced Concrete": {
-        "0-5": 5,
-        "5-10": 6,
-        "10-15": 18,
-        "15-20": 9,
-        "20-25": 7,
-        "25-30": 17,
-        "30-35": 18,
-        "35-40": 19,
-        "40-45": 29,
-        "45-50": 40,
-        "50-55": 32,
-        "55-60": 19,
-        "60-65": 8,
-        "65-70": 15,
-        "70-75": 2,
-        "75-80": 9,
-        "80-85": 8,
-        "85-90": 41,
-        "90-95": 80,
-        "95-100": 94,
-        "100-105": 92,
-        "105-110": 53,
-        "110-115": 80,
-        "115-120": 55,
-        "120-125": 55,
-        "125-130": 18,
-        "130-135": 1,
-        "135-140": 1
+        "0-5": {
+          "count": 5,
+          "area": 666761
+        },
+        "5-10": {
+          "count": 6,
+          "area": 1433219
+        },
+        "10-15": {
+          "count": 18,
+          "area": 6390329
+        },
+        "15-20": {
+          "count": 9,
+          "area": 3304078
+        },
+        "20-25": {
+          "count": 7,
+          "area": 1156151
+        },
+        "25-30": {
+          "count": 17,
+          "area": 4432867
+        },
+        "30-35": {
+          "count": 18,
+          "area": 7806750
+        },
+        "35-40": {
+          "count": 19,
+          "area": 17187713
+        },
+        "40-45": {
+          "count": 29,
+          "area": 21204050
+        },
+        "45-50": {
+          "count": 40,
+          "area": 13435401
+        },
+        "50-55": {
+          "count": 32,
+          "area": 6911807
+        },
+        "55-60": {
+          "count": 19,
+          "area": 6356993
+        },
+        "60-65": {
+          "count": 8,
+          "area": 3881531
+        },
+        "65-70": {
+          "count": 15,
+          "area": 7108681
+        },
+        "70-75": {
+          "count": 2,
+          "area": 1393970
+        },
+        "75-80": {
+          "count": 9,
+          "area": 1459678
+        },
+        "80-85": {
+          "count": 8,
+          "area": 907386
+        },
+        "85-90": {
+          "count": 41,
+          "area": 14928563
+        },
+        "90-95": {
+          "count": 80,
+          "area": 25952211
+        },
+        "95-100": {
+          "count": 94,
+          "area": 24617953
+        },
+        "100-105": {
+          "count": 92,
+          "area": 29182477
+        },
+        "105-110": {
+          "count": 53,
+          "area": 13777537
+        },
+        "110-115": {
+          "count": 80,
+          "area": 16407942
+        },
+        "115-120": {
+          "count": 55,
+          "area": 6353781
+        },
+        "120-125": {
+          "count": 55,
+          "area": 9076215
+        },
+        "125-130": {
+          "count": 18,
+          "area": 3543872
+        },
+        "130-135": {
+          "count": 1,
+          "area": 27610
+        },
+        "135-140": {
+          "count": 1,
+          "area": 27610
+        }
       },
       "Struct Steel": {
-        "0-5": 11,
-        "5-10": 24,
-        "10-15": 24,
-        "15-20": 26,
-        "20-25": 42,
-        "25-30": 70,
-        "30-35": 78,
-        "35-40": 53,
-        "40-45": 68,
-        "45-50": 38,
-        "50-55": 29,
-        "55-60": 8,
-        "60-65": 4,
-        "85-90": 3,
-        "90-95": 18,
-        "95-100": 7,
-        "100-105": 9,
-        "105-110": 9,
-        "110-115": 13,
-        "115-120": 20,
-        "120-125": 11,
-        "125-130": 4,
-        "135-140": 3,
-        "140-145": 3,
-        "145-150": 2
+        "0-5": {
+          "count": 11,
+          "area": 4518434
+        },
+        "5-10": {
+          "count": 24,
+          "area": 10946943
+        },
+        "10-15": {
+          "count": 24,
+          "area": 13617806
+        },
+        "15-20": {
+          "count": 26,
+          "area": 14060274
+        },
+        "20-25": {
+          "count": 42,
+          "area": 48394765
+        },
+        "25-30": {
+          "count": 70,
+          "area": 63902563
+        },
+        "30-35": {
+          "count": 78,
+          "area": 66368116
+        },
+        "35-40": {
+          "count": 53,
+          "area": 56413555
+        },
+        "40-45": {
+          "count": 68,
+          "area": 56584652
+        },
+        "45-50": {
+          "count": 38,
+          "area": 25258897
+        },
+        "50-55": {
+          "count": 29,
+          "area": 17855628
+        },
+        "55-60": {
+          "count": 8,
+          "area": 6851026
+        },
+        "60-65": {
+          "count": 4,
+          "area": 4938788
+        },
+        "85-90": {
+          "count": 3,
+          "area": 590813
+        },
+        "90-95": {
+          "count": 18,
+          "area": 15162340
+        },
+        "95-100": {
+          "count": 7,
+          "area": 4019513
+        },
+        "100-105": {
+          "count": 9,
+          "area": 8262255
+        },
+        "105-110": {
+          "count": 9,
+          "area": 1059700
+        },
+        "110-115": {
+          "count": 13,
+          "area": 4737467
+        },
+        "115-120": {
+          "count": 20,
+          "area": 8330738
+        },
+        "120-125": {
+          "count": 11,
+          "area": 3377259
+        },
+        "125-130": {
+          "count": 4,
+          "area": 1571148
+        },
+        "135-140": {
+          "count": 3,
+          "area": 9194730
+        },
+        "140-145": {
+          "count": 3,
+          "area": 9194730
+        },
+        "145-150": {
+          "count": 2,
+          "area": 6129820
+        }
       }
     },
     "bin_10": {
       "Wood/Frame": {
-        "0-10": 15,
-        "10-20": 2,
-        "20-30": 3,
-        "30-40": 7,
-        "40-50": 7,
-        "50-60": 10,
-        "60-70": 13,
-        "70-80": 21,
-        "80-90": 27,
-        "90-100": 54,
-        "100-110": 50,
-        "110-120": 81,
-        "120-130": 28,
-        "130-140": 6,
-        "170-180": 1
+        "0-10": {
+          "count": 15,
+          "area": 693220
+        },
+        "10-20": {
+          "count": 2,
+          "area": 41760
+        },
+        "20-30": {
+          "count": 3,
+          "area": 21362
+        },
+        "30-40": {
+          "count": 7,
+          "area": 464498
+        },
+        "40-50": {
+          "count": 7,
+          "area": 159528
+        },
+        "50-60": {
+          "count": 10,
+          "area": 228120
+        },
+        "60-70": {
+          "count": 13,
+          "area": 659762
+        },
+        "70-80": {
+          "count": 21,
+          "area": 401632
+        },
+        "80-90": {
+          "count": 27,
+          "area": 215430
+        },
+        "90-100": {
+          "count": 54,
+          "area": 486269
+        },
+        "100-110": {
+          "count": 50,
+          "area": 372750
+        },
+        "110-120": {
+          "count": 81,
+          "area": 745351
+        },
+        "120-130": {
+          "count": 28,
+          "area": 170359
+        },
+        "130-140": {
+          "count": 6,
+          "area": 52388
+        },
+        "170-180": {
+          "count": 1,
+          "area": 8800
+        }
       },
       "Brick/Concrete": {
-        "0-10": 19,
-        "10-20": 28,
-        "20-30": 41,
-        "30-40": 44,
-        "40-50": 55,
-        "50-60": 72,
-        "60-70": 56,
-        "70-80": 69,
-        "80-90": 112,
-        "90-100": 236,
-        "100-110": 230,
-        "110-120": 566,
-        "120-130": 205,
-        "130-140": 2,
-        "140-150": 2
+        "0-10": {
+          "count": 19,
+          "area": 5211869
+        },
+        "10-20": {
+          "count": 28,
+          "area": 4441408
+        },
+        "20-30": {
+          "count": 41,
+          "area": 2971718
+        },
+        "30-40": {
+          "count": 44,
+          "area": 1272319
+        },
+        "40-50": {
+          "count": 55,
+          "area": 7924231
+        },
+        "50-60": {
+          "count": 72,
+          "area": 33728824
+        },
+        "60-70": {
+          "count": 56,
+          "area": 16314838
+        },
+        "70-80": {
+          "count": 69,
+          "area": 3646418
+        },
+        "80-90": {
+          "count": 112,
+          "area": 8558912
+        },
+        "90-100": {
+          "count": 236,
+          "area": 18443988
+        },
+        "100-110": {
+          "count": 230,
+          "area": 14515561
+        },
+        "110-120": {
+          "count": 566,
+          "area": 55366136
+        },
+        "120-130": {
+          "count": 205,
+          "area": 18420207
+        },
+        "130-140": {
+          "count": 2,
+          "area": 123890
+        },
+        "140-150": {
+          "count": 2,
+          "area": 10802
+        }
       },
       "Metal": {
-        "0-10": 2,
-        "10-20": 1,
-        "40-50": 2,
-        "70-80": 3,
-        "90-100": 1,
-        "120-130": 1
+        "0-10": {
+          "count": 2,
+          "area": 9700
+        },
+        "10-20": {
+          "count": 1,
+          "area": 5040
+        },
+        "40-50": {
+          "count": 2,
+          "area": 8627
+        },
+        "70-80": {
+          "count": 3,
+          "area": 83148
+        },
+        "90-100": {
+          "count": 1,
+          "area": 0
+        },
+        "120-130": {
+          "count": 1,
+          "area": 5624
+        }
       },
       "Reinforced Concrete": {
-        "0-10": 11,
-        "10-20": 27,
-        "20-30": 24,
-        "30-40": 37,
-        "40-50": 69,
-        "50-60": 51,
-        "60-70": 23,
-        "70-80": 11,
-        "80-90": 49,
-        "90-100": 174,
-        "100-110": 145,
-        "110-120": 135,
-        "120-130": 73,
-        "130-140": 2
+        "0-10": {
+          "count": 11,
+          "area": 2099980
+        },
+        "10-20": {
+          "count": 27,
+          "area": 9694407
+        },
+        "20-30": {
+          "count": 24,
+          "area": 5589018
+        },
+        "30-40": {
+          "count": 37,
+          "area": 24994463
+        },
+        "40-50": {
+          "count": 69,
+          "area": 34639451
+        },
+        "50-60": {
+          "count": 51,
+          "area": 13268800
+        },
+        "60-70": {
+          "count": 23,
+          "area": 10990212
+        },
+        "70-80": {
+          "count": 11,
+          "area": 2853648
+        },
+        "80-90": {
+          "count": 49,
+          "area": 15835949
+        },
+        "90-100": {
+          "count": 174,
+          "area": 50570164
+        },
+        "100-110": {
+          "count": 145,
+          "area": 42960014
+        },
+        "110-120": {
+          "count": 135,
+          "area": 22761723
+        },
+        "120-130": {
+          "count": 73,
+          "area": 12620087
+        },
+        "130-140": {
+          "count": 2,
+          "area": 55220
+        }
       },
       "Struct Steel": {
-        "0-10": 35,
-        "10-20": 50,
-        "20-30": 112,
-        "30-40": 131,
-        "40-50": 106,
-        "50-60": 37,
-        "60-70": 4,
-        "80-90": 3,
-        "90-100": 25,
-        "100-110": 18,
-        "110-120": 33,
-        "120-130": 15,
-        "130-140": 3,
-        "140-150": 5
+        "0-10": {
+          "count": 35,
+          "area": 15465377
+        },
+        "10-20": {
+          "count": 50,
+          "area": 27678080
+        },
+        "20-30": {
+          "count": 112,
+          "area": 112297328
+        },
+        "30-40": {
+          "count": 131,
+          "area": 122781671
+        },
+        "40-50": {
+          "count": 106,
+          "area": 81843549
+        },
+        "50-60": {
+          "count": 37,
+          "area": 24706654
+        },
+        "60-70": {
+          "count": 4,
+          "area": 4938788
+        },
+        "80-90": {
+          "count": 3,
+          "area": 590813
+        },
+        "90-100": {
+          "count": 25,
+          "area": 19181853
+        },
+        "100-110": {
+          "count": 18,
+          "area": 9321955
+        },
+        "110-120": {
+          "count": 33,
+          "area": 13068205
+        },
+        "120-130": {
+          "count": 15,
+          "area": 4948407
+        },
+        "130-140": {
+          "count": 3,
+          "area": 9194730
+        },
+        "140-150": {
+          "count": 5,
+          "area": 15324550
+        }
       }
     },
     "bin_20": {
       "Wood/Frame": {
-        "0-20": 17,
-        "20-40": 10,
-        "40-60": 17,
-        "60-80": 34,
-        "80-100": 81,
-        "100-120": 131,
-        "120-140": 34,
-        "160-180": 1
+        "0-20": {
+          "count": 17,
+          "area": 734980
+        },
+        "20-40": {
+          "count": 10,
+          "area": 485860
+        },
+        "40-60": {
+          "count": 17,
+          "area": 387648
+        },
+        "60-80": {
+          "count": 34,
+          "area": 1061394
+        },
+        "80-100": {
+          "count": 81,
+          "area": 701699
+        },
+        "100-120": {
+          "count": 131,
+          "area": 1118101
+        },
+        "120-140": {
+          "count": 34,
+          "area": 222747
+        },
+        "160-180": {
+          "count": 1,
+          "area": 8800
+        }
       },
       "Brick/Concrete": {
-        "0-20": 47,
-        "20-40": 85,
-        "40-60": 127,
-        "60-80": 125,
-        "80-100": 348,
-        "100-120": 796,
-        "120-140": 207,
-        "140-160": 2
+        "0-20": {
+          "count": 47,
+          "area": 9653277
+        },
+        "20-40": {
+          "count": 85,
+          "area": 4244037
+        },
+        "40-60": {
+          "count": 127,
+          "area": 41653055
+        },
+        "60-80": {
+          "count": 125,
+          "area": 19961256
+        },
+        "80-100": {
+          "count": 348,
+          "area": 27002900
+        },
+        "100-120": {
+          "count": 796,
+          "area": 69881697
+        },
+        "120-140": {
+          "count": 207,
+          "area": 18544097
+        },
+        "140-160": {
+          "count": 2,
+          "area": 10802
+        }
       },
       "Metal": {
-        "0-20": 3,
-        "40-60": 2,
-        "60-80": 3,
-        "80-100": 1,
-        "120-140": 1
+        "0-20": {
+          "count": 3,
+          "area": 14740
+        },
+        "40-60": {
+          "count": 2,
+          "area": 8627
+        },
+        "60-80": {
+          "count": 3,
+          "area": 83148
+        },
+        "80-100": {
+          "count": 1,
+          "area": 0
+        },
+        "120-140": {
+          "count": 1,
+          "area": 5624
+        }
       },
       "Reinforced Concrete": {
-        "0-20": 38,
-        "20-40": 61,
-        "40-60": 120,
-        "60-80": 34,
-        "80-100": 223,
-        "100-120": 280,
-        "120-140": 75
+        "0-20": {
+          "count": 38,
+          "area": 11794387
+        },
+        "20-40": {
+          "count": 61,
+          "area": 30583481
+        },
+        "40-60": {
+          "count": 120,
+          "area": 47908251
+        },
+        "60-80": {
+          "count": 34,
+          "area": 13843860
+        },
+        "80-100": {
+          "count": 223,
+          "area": 66406113
+        },
+        "100-120": {
+          "count": 280,
+          "area": 65721737
+        },
+        "120-140": {
+          "count": 75,
+          "area": 12675307
+        }
       },
       "Struct Steel": {
-        "0-20": 85,
-        "20-40": 243,
-        "40-60": 143,
-        "60-80": 4,
-        "80-100": 28,
-        "100-120": 51,
-        "120-140": 18,
-        "140-160": 5
+        "0-20": {
+          "count": 85,
+          "area": 43143457
+        },
+        "20-40": {
+          "count": 243,
+          "area": 235078999
+        },
+        "40-60": {
+          "count": 143,
+          "area": 106550203
+        },
+        "60-80": {
+          "count": 4,
+          "area": 4938788
+        },
+        "80-100": {
+          "count": 28,
+          "area": 19772666
+        },
+        "100-120": {
+          "count": 51,
+          "area": 22390160
+        },
+        "120-140": {
+          "count": 18,
+          "area": 14143137
+        },
+        "140-160": {
+          "count": 5,
+          "area": 15324550
+        }
       }
     }
   },
@@ -79268,7 +79919,7 @@
     }
   ],
   "metadata": {
-    "generated_date": "2025-11-30T22:12:24.666313",
+    "generated_date": "2025-12-01T15:42:01.979983",
     "total_parcels_analyzed": 7823,
     "year_range": "2009-2025",
     "data_source": "Boston Property Assessment & Building Permits",
@@ -79278,229 +79929,505 @@
     "final_valid_records": 7823
   },
   "zoning_subdistrict_stats": {
-    "3F-3000": {
-      "avg_current_age": 114.27868852459017,
-      "avg_raze_lifespan": null
-    },
-    "2A": {
-      "avg_current_age": 68.5,
-      "avg_raze_lifespan": null
-    },
-    "WM": {
-      "avg_current_age": 62.357142857142854,
-      "avg_raze_lifespan": null
-    },
-    "B-1": {
-      "avg_current_age": 102.30555555555556,
-      "avg_raze_lifespan": 36.0
-    },
-    "3F-D-2000": {
-      "avg_current_age": 110.21944444444445,
-      "avg_raze_lifespan": 31.0
-    },
-    "SUFFOLK DOWNS EDA": {
-      "avg_current_age": 29.0,
-      "avg_raze_lifespan": null
-    },
-    "1": {
-      "avg_current_age": 72.75,
-      "avg_raze_lifespan": null
-    },
-    "CEDAR GROVE WATERFRONT MANUFACTURING SUBDISTRICT": {
-      "avg_current_age": 23.0,
-      "avg_raze_lifespan": null
-    },
-    "WATERFRONT NS": {
-      "avg_current_age": 78.6875,
-      "avg_raze_lifespan": null
-    },
-    "NORTH END PLAYGROUND RECREATION OPEN SPACE SUBDISTRICT": {
+    "15/16": {
       "avg_current_age": 126.0,
-      "avg_raze_lifespan": null
-    },
-    "MFR-3": {
-      "avg_current_age": 100.0,
-      "avg_raze_lifespan": null
-    },
-    "CLAM POINT WATERFRONT SERVICE": {
-      "avg_current_age": 71.0,
-      "avg_raze_lifespan": 49.0
-    },
-    "LC-.5": {
-      "avg_current_age": 90.0,
-      "avg_raze_lifespan": null
-    },
-    "MU-1": {
-      "avg_current_age": 57.583333333333336,
-      "avg_raze_lifespan": 105.0
-    },
-    "GOVERNMENT CENTER/CAA": {
-      "avg_current_age": 41.0,
-      "avg_raze_lifespan": null
-    },
-    "STUART STREET/WASHINGTON STREET PROTECTION AREA": {
-      "avg_current_age": 117.875,
-      "avg_raze_lifespan": null
-    },
-    "B-8-120a": {
-      "avg_current_age": 115.3030303030303,
-      "avg_raze_lifespan": null
-    },
-    "NORTH WASHINGTON ST CC": {
-      "avg_current_age": 101.34285714285714,
-      "avg_raze_lifespan": null
-    },
-    "H-3-65": {
-      "avg_current_age": 81.82161594963274,
-      "avg_raze_lifespan": null
-    },
-    "3F-6000": {
-      "avg_current_age": 99.06505295007564,
-      "avg_raze_lifespan": 94.0
-    },
-    "INSTITUTIONAL": {
-      "avg_current_age": 73.92857142857143,
-      "avg_raze_lifespan": null
-    },
-    "22S": {
-      "avg_current_age": 48.0,
-      "avg_raze_lifespan": null
-    },
-    "SUMMER ST. LI": {
-      "avg_current_age": 86.42857142857143,
-      "avg_raze_lifespan": 123.0
-    },
-    "HISTORIC CHINATOWN PROTECTION AREA": {
-      "avg_current_age": 116.53012048192771,
-      "avg_raze_lifespan": null
-    },
-    "3F-D-3000": {
-      "avg_current_age": 111.38415366146458,
-      "avg_raze_lifespan": 107.66666666666667
-    },
-    "IDA": {
-      "avg_current_age": 85.61538461538461,
-      "avg_raze_lifespan": null
-    },
-    "ALLSTON LANDING SOUTH EDA": {
-      "avg_current_age": 73.33333333333333,
-      "avg_raze_lifespan": null
-    },
-    "MCLELLAN HIGHWAY EDA": {
-      "avg_current_age": 41.666666666666664,
-      "avg_raze_lifespan": null
-    },
-    "WENTWORTH INSTITITE IS": {
-      "avg_current_age": 115.0,
-      "avg_raze_lifespan": null
-    },
-    "SAVIN HILL LC": {
-      "avg_current_age": 76.66666666666667,
-      "avg_raze_lifespan": null
-    },
-    "3F-D_2000": {
-      "avg_current_age": 111.55555555555556,
-      "avg_raze_lifespan": null
-    },
-    "Fields Corner CC": {
-      "avg_current_age": 92.0,
       "avg_raze_lifespan": null
     },
     "SEARS CRESCENT PROTECTION AREA": {
       "avg_current_age": 91.5,
       "avg_raze_lifespan": null
     },
-    "ALBANY STREET MEDICAL AREA CF": {
-      "avg_current_age": 55.0,
+    "LINDEN STREET LI-1": {
+      "avg_current_age": 85.0,
+      "avg_raze_lifespan": null
+    },
+    "SUDBURY STREET RESTRICTED GROWTH AREA": {
+      "avg_current_age": 66.4,
+      "avg_raze_lifespan": null
+    },
+    "MFR/LS-2": {
+      "avg_current_age": 115.36,
+      "avg_raze_lifespan": null
+    },
+    "CAMPUS HIGH CF": {
+      "avg_current_age": 95.5,
+      "avg_raze_lifespan": null
+    },
+    "Brookline Ave CC": {
+      "avg_current_age": 63.72727272727273,
+      "avg_raze_lifespan": 96.0
+    },
+    "MFR-3": {
+      "avg_current_age": 100.0,
+      "avg_raze_lifespan": null
+    },
+    "CASTLE ISLAND/ COLUMBUS PARK SHORELAND OPEN SPACE SUBDISTRICT": {
+      "avg_current_age": 87.25,
+      "avg_raze_lifespan": null
+    },
+    "TREMONT STREET PROTECTION AREA": {
+      "avg_current_age": 126.0,
+      "avg_raze_lifespan": null
+    },
+    "M-8": {
+      "avg_current_age": 120.0,
+      "avg_raze_lifespan": null
+    },
+    "NS-.5": {
+      "avg_current_age": 95.01298701298701,
+      "avg_raze_lifespan": 74.0
+    },
+    "RH-2000": {
+      "avg_current_age": 123.96124031007751,
+      "avg_raze_lifespan": null
+    },
+    "2A": {
+      "avg_current_age": 68.5,
+      "avg_raze_lifespan": null
+    },
+    "M-1": {
+      "avg_current_age": 75.83076923076923,
+      "avg_raze_lifespan": 44.5
+    },
+    "NDA": {
+      "avg_current_age": 87.95744680851064,
+      "avg_raze_lifespan": 94.0
+    },
+    "EDA NORTH": {
+      "avg_current_age": 50.04347826086956,
+      "avg_raze_lifespan": 52.0
+    },
+    "2F-7000": {
+      "avg_current_age": 103.9,
+      "avg_raze_lifespan": 105.0
+    },
+    "EDA CENTRAL": {
+      "avg_current_age": 112.53488372093024,
+      "avg_raze_lifespan": null
+    },
+    "WATERFRONT NS": {
+      "avg_current_age": 78.6875,
+      "avg_raze_lifespan": null
+    },
+    "C-1": {
+      "avg_current_age": 45.0,
+      "avg_raze_lifespan": null
+    },
+    "H-4": {
+      "avg_current_age": 112.72685185185185,
+      "avg_raze_lifespan": 111.0
+    },
+    "NORTHERN AVENUE TRANSITION ZONE": {
+      "avg_current_age": 9.5,
+      "avg_raze_lifespan": null
+    },
+    "NEW ENGLAND BAPTIST IS": {
+      "avg_current_age": 113.1,
+      "avg_raze_lifespan": null
+    },
+    "GOODENOUGH STREET LI-1": {
+      "avg_current_age": 44.0,
+      "avg_raze_lifespan": null
+    },
+    "ST GERMAIN STREET PROTECTION AREA": {
+      "avg_current_age": 109.4,
+      "avg_raze_lifespan": null
+    },
+    "L-2-65": {
+      "avg_current_age": 99.77333333333333,
+      "avg_raze_lifespan": null
+    },
+    "MFR/LS": {
+      "avg_current_age": 101.82244318181819,
+      "avg_raze_lifespan": 92.57142857142857
+    },
+    "WENTWORTH INSTITITE IS": {
+      "avg_current_age": 115.0,
+      "avg_raze_lifespan": null
+    },
+    "22S": {
+      "avg_current_age": 48.0,
+      "avg_raze_lifespan": null
+    },
+    "BROAD STREET PROTECTION AREA": {
+      "avg_current_age": 110.6,
+      "avg_raze_lifespan": null
+    },
+    "OS-A": {
+      "avg_current_age": 69.0,
+      "avg_raze_lifespan": 125.0
+    },
+    "H-1": {
+      "avg_current_age": 93.925,
+      "avg_raze_lifespan": null
+    },
+    "NS-1": {
+      "avg_current_age": 87.51152073732719,
+      "avg_raze_lifespan": 102.0
+    },
+    "L-.5": {
+      "avg_current_age": 72.88888888888889,
+      "avg_raze_lifespan": null
+    },
+    "CHARLESTOWN MARITIME ECONOMY RESERVE": {
+      "avg_current_age": 101.88235294117646,
+      "avg_raze_lifespan": null
+    },
+    "2F-5000": {
+      "avg_current_age": 104.11763365735115,
+      "avg_raze_lifespan": 109.0
+    },
+    "S2": {
+      "avg_current_age": 94.88260869565218,
+      "avg_raze_lifespan": 120.0
+    },
+    "2F-6000": {
+      "avg_current_age": 101.8723241590214,
+      "avg_raze_lifespan": 111.25
+    },
+    "3F-2000": {
+      "avg_current_age": 114.21095518334087,
+      "avg_raze_lifespan": 118.0
+    },
+    "MU-5": {
+      "avg_current_age": 104.328125,
+      "avg_raze_lifespan": 115.0
+    },
+    "B-10": {
+      "avg_current_age": 94.65625,
+      "avg_raze_lifespan": null
+    },
+    "CC-3": {
+      "avg_current_age": 100.0,
+      "avg_raze_lifespan": null
+    },
+    "CF": {
+      "avg_current_age": 77.97368421052632,
+      "avg_raze_lifespan": 80.0
+    },
+    "MCLELLAN HIGHWAY EDA": {
+      "avg_current_age": 41.666666666666664,
+      "avg_raze_lifespan": null
+    },
+    "EBR-3": {
+      "avg_current_age": 114.19361901782922,
+      "avg_raze_lifespan": 119.28571428571429
+    },
+    "2F-9000": {
+      "avg_current_age": 111.33676975945018,
+      "avg_raze_lifespan": 123.66666666666667
+    },
+    "PILOT HOUSE EXTENSION": {
+      "avg_current_age": 26.0,
+      "avg_raze_lifespan": null
+    },
+    "LEATHER DISTRICT": {
+      "avg_current_age": 87.04545454545455,
+      "avg_raze_lifespan": null
+    },
+    "OS-UW": {
+      "avg_current_age": 80.51546391752578,
+      "avg_raze_lifespan": null
+    },
+    "GENERAL AREA": {
+      "avg_current_age": 80.67777777777778,
+      "avg_raze_lifespan": 52.5
+    },
+    "S4": {
+      "avg_current_age": 93.40860215053763,
+      "avg_raze_lifespan": null
+    },
+    "North Boylston NS-2": {
+      "avg_current_age": 76.21428571428571,
+      "avg_raze_lifespan": null
+    },
+    "S5": {
+      "avg_current_age": 119.6,
+      "avg_raze_lifespan": null
+    },
+    "18S": {
+      "avg_current_age": 89.66666666666667,
+      "avg_raze_lifespan": null
+    },
+    "RH": {
+      "avg_current_age": 108.39455782312925,
+      "avg_raze_lifespan": 78.5
+    },
+    "PEMBERTON SQUARE PROTECTION AREA": {
+      "avg_current_age": 68.66666666666667,
       "avg_raze_lifespan": null
     },
     "BOSTON UNIVERSITY IS": {
       "avg_current_age": 65.7,
       "avg_raze_lifespan": 49.0
     },
-    "EGLESTON SQUARE NS": {
-      "avg_current_age": 99.72727272727273,
+    "HARVARD AVENUE CC-1": {
+      "avg_current_age": 88.81132075471699,
+      "avg_raze_lifespan": 81.0
+    },
+    "B-3-65": {
+      "avg_current_age": 117.36029411764706,
+      "avg_raze_lifespan": 1.0
+    },
+    "BIO SQUARE EDA": {
+      "avg_current_age": 23.4,
       "avg_raze_lifespan": null
     },
     "INDIA STREET RESTRICTED GROWTH AREA": {
       "avg_current_age": 61.333333333333336,
       "avg_raze_lifespan": null
     },
-    "2F-6000": {
-      "avg_current_age": 101.8723241590214,
-      "avg_raze_lifespan": 111.25
+    "GROVE HALL NS": {
+      "avg_current_age": 103.26666666666667,
+      "avg_raze_lifespan": 105.0
     },
-    "IS": {
-      "avg_current_age": 94.73493975903614,
-      "avg_raze_lifespan": 117.0
+    "WMU": {
+      "avg_current_age": 77.88888888888889,
+      "avg_raze_lifespan": 118.0
     },
-    "MFR-1": {
-      "avg_current_age": 91.43396226415095,
-      "avg_raze_lifespan": 99.0
-    },
-    "NS-.5": {
-      "avg_current_age": 95.01298701298701,
-      "avg_raze_lifespan": 74.0
-    },
-    "BRAINTREE STREET LI-1": {
-      "avg_current_age": 62.642857142857146,
-      "avg_raze_lifespan": 2.0
-    },
-    "B-8-120b": {
-      "avg_current_age": 82.92,
+    "Mass Ave NS-1": {
+      "avg_current_age": 114.0625,
       "avg_raze_lifespan": null
     },
-    "Adams Street NS": {
-      "avg_current_age": 106.71428571428571,
+    "SARATOGA STREET EDA": {
+      "avg_current_age": 77.75,
+      "avg_raze_lifespan": 82.0
+    },
+    "MU-3": {
+      "avg_current_age": 98.66666666666667,
+      "avg_raze_lifespan": null
+    },
+    "D St. NDA": {
+      "avg_current_age": 67.75,
+      "avg_raze_lifespan": null
+    },
+    "STATE HOUSE PROTECTION AREA": {
+      "avg_current_age": 98.71428571428571,
+      "avg_raze_lifespan": null
+    },
+    "WE": {
+      "avg_current_age": 93.0,
+      "avg_raze_lifespan": null
+    },
+    "1F-4000": {
+      "avg_current_age": 99.15601503759399,
+      "avg_raze_lifespan": 85.5
+    },
+    "L-1": {
+      "avg_current_age": 72.4375,
+      "avg_raze_lifespan": null
+    },
+    "OS": {
+      "avg_current_age": 76.875,
+      "avg_raze_lifespan": 92.0
+    },
+    "Huntington Ave NS-2": {
+      "avg_current_age": 117.27272727272727,
+      "avg_raze_lifespan": null
+    },
+    "22N": {
+      "avg_current_age": 65.0,
+      "avg_raze_lifespan": null
+    },
+    "TYLER STREET SPECIAL STUDY AREA": {
+      "avg_current_age": 72.57142857142857,
       "avg_raze_lifespan": null
     },
     "CC": {
       "avg_current_age": 72.79746835443038,
       "avg_raze_lifespan": 101.11111111111111
     },
-    "GATEWAY INDUSTRIAL": {
-      "avg_current_age": 66.63414634146342,
-      "avg_raze_lifespan": 75.0
-    },
-    "MCOP INSTITUTIONAL DISTRICT": {
-      "avg_current_age": 120.0,
+    "NE DEACONESS HOSPITAL INSTITUTIONAL DISTRICT": {
+      "avg_current_age": 100.33333333333333,
       "avg_raze_lifespan": null
     },
-    "CC-1": {
-      "avg_current_age": 63.758620689655174,
-      "avg_raze_lifespan": 119.0
-    },
-    "B-3-65": {
-      "avg_current_age": 117.36029411764706,
-      "avg_raze_lifespan": 1.0
-    },
-    "CONGRESS/STATE STREET MEDIUM DENSITY AREA": {
-      "avg_current_age": 57.0,
+    "CHRISTIAN SCIENCE INSTITUTIONAL AREA": {
+      "avg_current_age": 88.6,
       "avg_raze_lifespan": null
     },
-    "EBR-2.5": {
-      "avg_current_age": 91.91150442477876,
-      "avg_raze_lifespan": 65.0
+    "1A": {
+      "avg_current_age": 42.0,
+      "avg_raze_lifespan": null
     },
-    "3F-7000": {
-      "avg_current_age": 115.24747474747475,
-      "avg_raze_lifespan": 99.0
+    "CAMBRIDGE STREET NORTH SIDE PROTECTION AREA": {
+      "avg_current_age": 68.61538461538461,
+      "avg_raze_lifespan": null
     },
-    "LADDER BLOCKS AND WASHINGTON STREET THEATRE PROTECTION AREA": {
-      "avg_current_age": 113.02127659574468,
+    "OS-BZ": {
+      "avg_current_age": 88.32432432432432,
+      "avg_raze_lifespan": null
+    },
+    "OS-CM": {
+      "avg_current_age": 82.53416149068323,
+      "avg_raze_lifespan": 90.5
+    },
+    "2F-5000 (A)": {
+      "avg_current_age": 104.88127853881278,
+      "avg_raze_lifespan": 119.5
+    },
+    "WS": {
+      "avg_current_age": 89.1,
+      "avg_raze_lifespan": 112.0
+    },
+    "SUFFOLK DOWNS EDA": {
+      "avg_current_age": 29.0,
+      "avg_raze_lifespan": null
+    },
+    "NEW ECONOMY DEVELOPMENT AREA": {
+      "avg_current_age": 97.0,
+      "avg_raze_lifespan": null
+    },
+    "ALLSTON LANDING SOUTH EDA": {
+      "avg_current_age": 73.33333333333333,
+      "avg_raze_lifespan": null
+    },
+    "BETH ISRAEL HOSPITAL INSTITUTIONAL DISTRICT": {
+      "avg_current_age": 76.33333333333333,
+      "avg_raze_lifespan": null
+    },
+    "H-5": {
+      "avg_current_age": 47.0,
+      "avg_raze_lifespan": null
+    },
+    "1F-7000": {
+      "avg_current_age": 114.38483547925608,
+      "avg_raze_lifespan": 138.66666666666666
+    },
+    "R2": {
+      "avg_current_age": 96.8179587831207,
+      "avg_raze_lifespan": 93.5
+    },
+    "Lower Mills NS": {
+      "avg_current_age": 101.125,
+      "avg_raze_lifespan": null
+    },
+    "NEW BOSTON GARDEN DEVELOPMENT AREA": {
+      "avg_current_age": 19.6,
+      "avg_raze_lifespan": null
+    },
+    "3": {
+      "avg_current_age": 98.92307692307692,
+      "avg_raze_lifespan": null
+    },
+    "2F-3000": {
+      "avg_current_age": 99.69377990430623,
+      "avg_raze_lifespan": null
+    },
+    "3F-D-4000": {
+      "avg_current_age": 113.52941176470588,
       "avg_raze_lifespan": null
     },
     "MU-2": {
       "avg_current_age": 86.8,
       "avg_raze_lifespan": null
     },
-    "MU-3": {
-      "avg_current_age": 98.66666666666667,
+    "EPS": {
+      "avg_current_age": 18.44047619047619,
       "avg_raze_lifespan": null
     },
-    "SALEM ST NS": {
-      "avg_current_age": 101.96551724137932,
-      "avg_raze_lifespan": 104.0
+    "SUMMER ST. LI": {
+      "avg_current_age": 86.42857142857143,
+      "avg_raze_lifespan": 123.0
+    },
+    "WASHINGTON PARK MALL NS": {
+      "avg_current_age": 57.5,
+      "avg_raze_lifespan": null
+    },
+    "BLOSSOM STREET RESTRICTED GROWTH AREA": {
+      "avg_current_age": 72.6,
+      "avg_raze_lifespan": null
+    },
+    "H-2-D-65": {
+      "avg_current_age": 60.0,
+      "avg_raze_lifespan": null
+    },
+    "MFR-1": {
+      "avg_current_age": 91.43396226415095,
+      "avg_raze_lifespan": 99.0
+    },
+    "B-8-120c": {
+      "avg_current_age": 107.84615384615384,
+      "avg_raze_lifespan": null
+    },
+    "DORCHESTER BAY WATERFRONT SERVICE SUBDISTRICT": {
+      "avg_current_age": 97.0,
+      "avg_raze_lifespan": null
+    },
+    "M-4": {
+      "avg_current_age": 96.21212121212122,
+      "avg_raze_lifespan": null
+    },
+    "MERCANTILE NS": {
+      "avg_current_age": 126.0,
+      "avg_raze_lifespan": null
+    },
+    "B-1": {
+      "avg_current_age": 102.30555555555556,
+      "avg_raze_lifespan": 36.0
+    },
+    "GUEST STREET LI-2": {
+      "avg_current_age": 48.8,
+      "avg_raze_lifespan": 59.5
+    },
+    "Everett/Telford CC-1": {
+      "avg_current_age": 70.29166666666667,
+      "avg_raze_lifespan": null
+    },
+    "1F-3000": {
+      "avg_current_age": 114.27272727272727,
+      "avg_raze_lifespan": null
+    },
+    "1F-5000": {
+      "avg_current_age": 99.11501736111111,
+      "avg_raze_lifespan": 116.7
+    },
+    "EBR-4": {
+      "avg_current_age": 106.4077743902439,
+      "avg_raze_lifespan": 90.66666666666667
+    },
+    "N2": {
+      "avg_current_age": 113.5,
+      "avg_raze_lifespan": null
+    },
+    "First St. LI": {
+      "avg_current_age": 82.18181818181819,
+      "avg_raze_lifespan": null
+    },
+    "BLACKSTONE BLOCK PROTECTION AREA": {
+      "avg_current_age": 115.52941176470588,
+      "avg_raze_lifespan": null
+    },
+    "B-4": {
+      "avg_current_age": 92.62222222222222,
+      "avg_raze_lifespan": 96.0
+    },
+    "MASSACHUSETTS AVENUE/BELVIDERE STREET PROTECTION AREA": {
+      "avg_current_age": 57.166666666666664,
+      "avg_raze_lifespan": null
+    },
+    "FRANCISCAN CHILDREN'S HOSPITAL IS": {
+      "avg_current_age": 110.7,
+      "avg_raze_lifespan": null
+    },
+    "C-2": {
+      "avg_current_age": 112.0,
+      "avg_raze_lifespan": null
+    },
+    "BOSTON COMMON AND PUBLIC GARDEN PROTECTION AREA": {
+      "avg_current_age": 96.2,
+      "avg_raze_lifespan": 125.0
+    },
+    "9": {
+      "avg_current_age": 5.0,
+      "avg_raze_lifespan": null
+    },
+    "NI-VA-3": {
+      "avg_current_age": 91.6,
+      "avg_raze_lifespan": null
+    },
+    "GREATER ROXBURY EDA": {
+      "avg_current_age": 93.66101694915254,
+      "avg_raze_lifespan": null
     },
     "23N": {
       "avg_current_age": 46.5,
@@ -79510,897 +80437,621 @@
       "avg_current_age": 52.0,
       "avg_raze_lifespan": null
     },
-    "LOWER MILLS SHORELAND OPEN SPACE SUBDISTRICT": {
-      "avg_current_age": 120.0,
+    "ST. ELIZABETH'S HOSPITAL IS": {
+      "avg_current_age": 47.0,
+      "avg_raze_lifespan": 44.0
+    },
+    "NI-VA-2": {
+      "avg_current_age": 70.71428571428571,
+      "avg_raze_lifespan": 34.0
+    },
+    "LC": {
+      "avg_current_age": 101.55764705882353,
+      "avg_raze_lifespan": 98.0
+    },
+    "OLD STATE HOUSE PROTECTION AREA": {
+      "avg_current_age": 126.0,
       "avg_raze_lifespan": null
     },
     "NEPONSET RIVER RESIDENTIAL SUBDISTRICT": {
       "avg_current_age": 82.0,
       "avg_raze_lifespan": null
     },
-    "WILLIAM J. BARRY PLAYGROUND RECREATION OPEN SPACE": {
-      "avg_current_age": 25.0,
-      "avg_raze_lifespan": null
-    },
-    "NEW ENGLAND BAPTIST IS": {
-      "avg_current_age": 113.1,
-      "avg_raze_lifespan": null
-    },
-    "NS-1": {
-      "avg_current_age": 87.51152073732719,
-      "avg_raze_lifespan": 102.0
-    },
-    "LINDEN STREET LI-1": {
-      "avg_current_age": 85.0,
-      "avg_raze_lifespan": null
-    },
-    "CC-4": {
-      "avg_current_age": 24.5,
-      "avg_raze_lifespan": null
-    },
-    "Mass Ave NS-2": {
-      "avg_current_age": 40.666666666666664,
-      "avg_raze_lifespan": null
-    },
-    "MU-7": {
-      "avg_current_age": 92.56521739130434,
-      "avg_raze_lifespan": null
-    },
-    "4": {
-      "avg_current_age": 98.33333333333333,
-      "avg_raze_lifespan": null
-    },
-    "Huntington Ave NS-2": {
-      "avg_current_age": 117.27272727272727,
-      "avg_raze_lifespan": null
-    },
-    "OS": {
-      "avg_current_age": 76.875,
-      "avg_raze_lifespan": 92.0
-    },
-    "WALNUT AVENUE CF": {
-      "avg_current_age": 126.0,
-      "avg_raze_lifespan": null
-    },
-    "RH": {
-      "avg_current_age": 108.39455782312925,
-      "avg_raze_lifespan": 78.5
-    },
-    "MU-4": {
-      "avg_current_age": 97.41772151898734,
-      "avg_raze_lifespan": 105.0
-    },
-    "NI-VA-1": {
-      "avg_current_age": 105.0,
-      "avg_raze_lifespan": null
-    },
-    "TREMONT CF": {
-      "avg_current_age": 110.5,
-      "avg_raze_lifespan": null
-    },
-    "COMMUNITY COLLEGE CF": {
-      "avg_current_age": 90.88235294117646,
-      "avg_raze_lifespan": null
-    },
-    "L-.5": {
-      "avg_current_age": 72.88888888888889,
-      "avg_raze_lifespan": null
-    },
-    "TREMONT STREET PROTECTION AREA": {
-      "avg_current_age": 126.0,
-      "avg_raze_lifespan": null
-    },
-    "NORTH END LOCAL BUSINESS SUBDISTRICT": {
-      "avg_current_age": 72.5,
-      "avg_raze_lifespan": null
-    },
-    "CF": {
-      "avg_current_age": 77.97368421052632,
-      "avg_raze_lifespan": 80.0
-    },
-    "2": {
-      "avg_current_age": 68.0,
-      "avg_raze_lifespan": null
-    },
-    "CC-3": {
-      "avg_current_age": 100.0,
-      "avg_raze_lifespan": null
-    },
-    "MFR-2": {
-      "avg_current_age": 92.176,
-      "avg_raze_lifespan": 88.0
-    },
-    "H-2-65": {
-      "avg_current_age": 112.82790309106099,
-      "avg_raze_lifespan": null
-    },
-    "ST. ELIZABETH'S HOSPITAL IS": {
-      "avg_current_age": 47.0,
-      "avg_raze_lifespan": 44.0
-    },
-    "BOSTON COLLEGE IS": {
-      "avg_current_age": 68.0,
-      "avg_raze_lifespan": null
-    },
-    "CHARLESTOWN GENERAL INDUSTRIAL": {
-      "avg_current_age": 79.4,
-      "avg_raze_lifespan": 41.0
-    },
-    "CASTLE ISLAND/ COLUMBUS PARK SHORELAND OPEN SPACE SUBDISTRICT": {
-      "avg_current_age": 87.25,
-      "avg_raze_lifespan": null
-    },
-    "North Boylston NS-2": {
-      "avg_current_age": 76.21428571428571,
-      "avg_raze_lifespan": null
-    },
-    "COMMERCIAL WHARF NS": {
-      "avg_current_age": 100.0,
-      "avg_raze_lifespan": null
-    },
-    "SARATOGA STREET EDA": {
-      "avg_current_age": 77.75,
-      "avg_raze_lifespan": 82.0
-    },
-    "FRANCISCAN CHILDREN'S HOSPITAL IS": {
-      "avg_current_age": 110.7,
-      "avg_raze_lifespan": null
-    },
-    "NE/CAA": {
-      "avg_current_age": 97.8,
-      "avg_raze_lifespan": 86.0
-    },
-    "GREATER ROXBURY EDA": {
-      "avg_current_age": 93.66101694915254,
-      "avg_raze_lifespan": null
-    },
-    "R1": {
-      "avg_current_age": 79.22524483133841,
-      "avg_raze_lifespan": 64.0
-    },
-    "LIA": {
-      "avg_current_age": 88.97674418604652,
-      "avg_raze_lifespan": null
-    },
-    "CORE INDUSTRIAL": {
-      "avg_current_age": 68.5,
-      "avg_raze_lifespan": null
+    "IS": {
+      "avg_current_age": 94.73493975903614,
+      "avg_raze_lifespan": 117.0
     },
     "M-2": {
       "avg_current_age": 88.23529411764706,
-      "avg_raze_lifespan": null
-    },
-    "BIO SQUARE EDA": {
-      "avg_current_age": 23.4,
-      "avg_raze_lifespan": null
-    },
-    "S3": {
-      "avg_current_age": 91.95238095238095,
-      "avg_raze_lifespan": null
-    },
-    "GENERAL AREA": {
-      "avg_current_age": 80.67777777777778,
-      "avg_raze_lifespan": 52.5
-    },
-    "NI-VA-2": {
-      "avg_current_age": 70.71428571428571,
-      "avg_raze_lifespan": 34.0
-    },
-    "CPS IMP": {
-      "avg_current_age": 132.5,
-      "avg_raze_lifespan": null
-    },
-    "H-2": {
-      "avg_current_age": 101.81481481481481,
-      "avg_raze_lifespan": null
-    },
-    "MFR/LS": {
-      "avg_current_age": 101.82244318181819,
-      "avg_raze_lifespan": 92.57142857142857
-    },
-    "TYLER STREET SPECIAL STUDY AREA": {
-      "avg_current_age": 72.57142857142857,
-      "avg_raze_lifespan": null
-    },
-    "H-5": {
-      "avg_current_age": 47.0,
-      "avg_raze_lifespan": null
-    },
-    "L-2": {
-      "avg_current_age": 108.0,
-      "avg_raze_lifespan": null
-    },
-    "ST PATRICK NS": {
-      "avg_current_age": 115.66666666666667,
-      "avg_raze_lifespan": null
-    },
-    "DORCHESTER BAY WATERFRONT SERVICE SUBDISTRICT": {
-      "avg_current_age": 97.0,
-      "avg_raze_lifespan": null
-    },
-    "EBR-4": {
-      "avg_current_age": 106.4077743902439,
-      "avg_raze_lifespan": 90.66666666666667
-    },
-    "ALLEGHANY CF": {
-      "avg_current_age": 74.66666666666667,
-      "avg_raze_lifespan": null
-    },
-    "SOUTH BOSTON MARITIME ECONOMY RESERVE": {
-      "avg_current_age": 57.0,
-      "avg_raze_lifespan": 96.0
-    },
-    "Everett/Telford CC-1": {
-      "avg_current_age": 70.29166666666667,
-      "avg_raze_lifespan": null
-    },
-    "ST GERMAIN STREET PROTECTION AREA": {
-      "avg_current_age": 109.4,
-      "avg_raze_lifespan": null
-    },
-    "1F-5000": {
-      "avg_current_age": 99.11501736111111,
-      "avg_raze_lifespan": 116.7
-    },
-    "H-3": {
-      "avg_current_age": 73.28888888888889,
-      "avg_raze_lifespan": 67.0
-    },
-    "RESIDENTIAL CHINATOWN": {
-      "avg_current_age": 113.75342465753425,
-      "avg_raze_lifespan": null
-    },
-    "WENTWORTH INSTITUTE IS": {
-      "avg_current_age": 100.28571428571429,
-      "avg_raze_lifespan": null
-    },
-    "NEWMARKET IDA": {
-      "avg_current_age": 72.96428571428571,
-      "avg_raze_lifespan": 60.0
-    },
-    "R2": {
-      "avg_current_age": 96.8179587831207,
-      "avg_raze_lifespan": 93.5
-    },
-    "DUDLEY SQUARE EDA": {
-      "avg_current_age": 97.14117647058823,
-      "avg_raze_lifespan": 114.0
-    },
-    "SUDBURY STREET RESTRICTED GROWTH AREA": {
-      "avg_current_age": 66.4,
-      "avg_raze_lifespan": null
-    },
-    "EDA NORTH": {
-      "avg_current_age": 50.04347826086956,
-      "avg_raze_lifespan": 52.0
-    },
-    "15/16": {
-      "avg_current_age": 126.0,
-      "avg_raze_lifespan": null
-    },
-    "GOODENOUGH STREET LI-1": {
-      "avg_current_age": 44.0,
-      "avg_raze_lifespan": null
-    },
-    "Boston Landing CC-1": {
-      "avg_current_age": 88.61538461538461,
-      "avg_raze_lifespan": 74.0
-    },
-    "H-4": {
-      "avg_current_age": 112.72685185185185,
-      "avg_raze_lifespan": 111.0
-    },
-    "2F-5000 (A)": {
-      "avg_current_age": 104.88127853881278,
-      "avg_raze_lifespan": 119.5
-    },
-    "MARKETS PROTECTION AREA": {
-      "avg_current_age": 97.0,
-      "avg_raze_lifespan": 117.0
-    },
-    "B-6-90a": {
-      "avg_current_age": 108.28888888888889,
-      "avg_raze_lifespan": null
-    },
-    "MFR": {
-      "avg_current_age": 104.60911713791114,
-      "avg_raze_lifespan": 112.22727272727273
-    },
-    "S4": {
-      "avg_current_age": 93.40860215053763,
-      "avg_raze_lifespan": null
-    },
-    "MASSACHUSETTS AVENUE/BELVIDERE STREET PROTECTION AREA": {
-      "avg_current_age": 57.166666666666664,
-      "avg_raze_lifespan": null
-    },
-    "CHARLESTOWN GATEWAY SUBDISTRICT": {
-      "avg_current_age": 63.666666666666664,
-      "avg_raze_lifespan": null
-    },
-    "3F-2000": {
-      "avg_current_age": 114.21095518334087,
-      "avg_raze_lifespan": 118.0
-    },
-    "WATERFRONT TRANSITION ZONE": {
-      "avg_current_age": 95.0,
-      "avg_raze_lifespan": null
-    },
-    "CUSTOM HOUSE MEDIUM DENSITY AREA": {
-      "avg_current_age": 98.125,
-      "avg_raze_lifespan": null
-    },
-    "NORTH END WATERFRONT SUBDISTRICT": {
-      "avg_current_age": 64.91666666666667,
-      "avg_raze_lifespan": null
-    },
-    "B-4": {
-      "avg_current_age": 92.62222222222222,
-      "avg_raze_lifespan": 96.0
-    },
-    "OS-P": {
-      "avg_current_age": 95.5910931174089,
-      "avg_raze_lifespan": 59.666666666666664
-    },
-    "NEW ECONOMY DEVELOPMENT AREA": {
-      "avg_current_age": 97.0,
-      "avg_raze_lifespan": null
-    },
-    "MU-5": {
-      "avg_current_age": 104.328125,
-      "avg_raze_lifespan": 115.0
-    },
-    "L-2-65": {
-      "avg_current_age": 99.77333333333333,
-      "avg_raze_lifespan": null
-    },
-    "LITTLE MYSTIC WATERFRONT ACCESS OPEN SPACE": {
-      "avg_current_age": 76.0,
-      "avg_raze_lifespan": null
-    },
-    "2F": {
-      "avg_current_age": 105.76712328767124,
-      "avg_raze_lifespan": null
-    },
-    "NEPOSET SHORELAND OPEN SPACE SUBDISTRICT": {
-      "avg_current_age": 93.6,
-      "avg_raze_lifespan": null
-    },
-    "BLACKSTONE BLOCK PROTECTION AREA": {
-      "avg_current_age": 115.52941176470588,
-      "avg_raze_lifespan": null
-    },
-    "HARVARD AVENUE CC-1": {
-      "avg_current_age": 88.81132075471699,
-      "avg_raze_lifespan": 81.0
-    },
-    "S2": {
-      "avg_current_age": 94.88260869565218,
-      "avg_raze_lifespan": 120.0
-    },
-    "OLD STATE HOUSE PROTECTION AREA": {
-      "avg_current_age": 126.0,
-      "avg_raze_lifespan": null
-    },
-    "PARCEL-TO-PARCEL LINKAGE DEVELOPMENT AREA": {
-      "avg_current_age": 92.0,
-      "avg_raze_lifespan": null
-    },
-    "HARVARD UNIVERSITY IS": {
-      "avg_current_age": 55.0,
-      "avg_raze_lifespan": null
-    },
-    "S5": {
-      "avg_current_age": 119.6,
-      "avg_raze_lifespan": null
-    },
-    "HANOVER CC": {
-      "avg_current_age": 112.26771653543307,
-      "avg_raze_lifespan": 168.0
-    },
-    "CAMBRIDGE STREET NORTH SIDE PROTECTION AREA": {
-      "avg_current_age": 68.61538461538461,
-      "avg_raze_lifespan": null
-    },
-    "Fenway Triangle NDA": {
-      "avg_current_age": 100.12,
-      "avg_raze_lifespan": null
-    },
-    "Barrys Corner CC-1": {
-      "avg_current_age": 82.78571428571429,
-      "avg_raze_lifespan": null
-    },
-    "22N": {
-      "avg_current_age": 65.0,
-      "avg_raze_lifespan": null
-    },
-    "CAMPUS HIGH CF": {
-      "avg_current_age": 95.5,
-      "avg_raze_lifespan": null
-    },
-    "E St. LI": {
-      "avg_current_age": 21.0,
-      "avg_raze_lifespan": null
-    },
-    "OS-BZ": {
-      "avg_current_age": 88.32432432432432,
-      "avg_raze_lifespan": null
-    },
-    "S1": {
-      "avg_current_age": 105.42758620689655,
-      "avg_raze_lifespan": 109.0
-    },
-    "BOSTON COMMON AND PUBLIC GARDEN PROTECTION AREA": {
-      "avg_current_age": 96.2,
-      "avg_raze_lifespan": 125.0
-    },
-    "OS-UW": {
-      "avg_current_age": 80.51546391752578,
-      "avg_raze_lifespan": null
-    },
-    "3F-5000": {
-      "avg_current_age": 106.6153035095647,
-      "avg_raze_lifespan": 105.17391304347827
-    },
-    "LC": {
-      "avg_current_age": 101.55764705882353,
-      "avg_raze_lifespan": 98.0
-    },
-    "NI-VA-3": {
-      "avg_current_age": 91.6,
-      "avg_raze_lifespan": null
-    },
-    "1F-9000": {
-      "avg_current_age": 80.01863799283154,
-      "avg_raze_lifespan": 75.0
-    },
-    "BAY VILLAGE PROTECTION AREA": {
-      "avg_current_age": 119.2,
-      "avg_raze_lifespan": null
-    },
-    "OS-SL": {
-      "avg_current_age": 85.5,
-      "avg_raze_lifespan": null
-    },
-    "M-1-55": {
-      "avg_current_age": 126.0,
-      "avg_raze_lifespan": null
-    },
-    "1F-7000": {
-      "avg_current_age": 114.38483547925608,
-      "avg_raze_lifespan": 138.66666666666666
-    },
-    "H-1-50": {
-      "avg_current_age": 34.578947368421055,
-      "avg_raze_lifespan": 120.5
-    },
-    "S0": {
-      "avg_current_age": 108.8013698630137,
-      "avg_raze_lifespan": 82.0
-    },
-    "DANA FARBER CANCER INTITUTE IS": {
-      "avg_current_age": 17.0,
-      "avg_raze_lifespan": null
-    },
-    "I-2": {
-      "avg_current_age": 70.91891891891892,
-      "avg_raze_lifespan": null
-    },
-    "CHRISTIAN SCIENCE INSTITUTIONAL AREA": {
-      "avg_current_age": 88.6,
-      "avg_raze_lifespan": null
-    },
-    "WARREN STREET CF": {
-      "avg_current_age": 96.92307692307692,
-      "avg_raze_lifespan": 116.0
-    },
-    "CPS": {
-      "avg_current_age": 73.7135922330097,
-      "avg_raze_lifespan": 104.0
-    },
-    "17N": {
-      "avg_current_age": 26.0,
-      "avg_raze_lifespan": null
-    },
-    "GUEST STREET LI-2": {
-      "avg_current_age": 48.8,
-      "avg_raze_lifespan": 59.5
-    },
-    "BULFINCH TRIANGLE/CAA": {
-      "avg_current_age": 14.0,
-      "avg_raze_lifespan": null
-    },
-    "N2": {
-      "avg_current_age": 113.5,
-      "avg_raze_lifespan": null
-    },
-    "2F-4000": {
-      "avg_current_age": 114.44206008583691,
-      "avg_raze_lifespan": null
-    },
-    "7W": {
-      "avg_current_age": 22.0,
-      "avg_raze_lifespan": null
-    },
-    "PEMBERTON SQUARE PROTECTION AREA": {
-      "avg_current_age": 68.66666666666667,
-      "avg_raze_lifespan": null
-    },
-    "D St. NDA": {
-      "avg_current_age": 67.75,
-      "avg_raze_lifespan": null
-    },
-    "Western Avenue/Soldiers Field Road CC-1": {
-      "avg_current_age": 65.20689655172414,
-      "avg_raze_lifespan": 66.0
-    },
-    "B-10": {
-      "avg_current_age": 94.65625,
-      "avg_raze_lifespan": null
-    },
-    "H-2-D-65": {
-      "avg_current_age": 60.0,
-      "avg_raze_lifespan": null
-    },
-    "EDA CENTRAL": {
-      "avg_current_age": 112.53488372093024,
-      "avg_raze_lifespan": null
-    },
-    "PILOT HOUSE EXTENSION": {
-      "avg_current_age": 26.0,
-      "avg_raze_lifespan": null
-    },
-    "H-1": {
-      "avg_current_age": 93.925,
-      "avg_raze_lifespan": null
-    },
-    "NS-2": {
-      "avg_current_age": 97.01785714285714,
-      "avg_raze_lifespan": 87.83333333333333
-    },
-    "WS": {
-      "avg_current_age": 89.1,
-      "avg_raze_lifespan": 112.0
-    },
-    "EBR-3": {
-      "avg_current_age": 114.19361901782922,
-      "avg_raze_lifespan": 119.28571428571429
-    },
-    "3F-4000": {
-      "avg_current_age": 105.22154858825567,
-      "avg_raze_lifespan": 101.70833333333333
-    },
-    "3": {
-      "avg_current_age": 98.92307692307692,
-      "avg_raze_lifespan": null
-    },
-    "EPS": {
-      "avg_current_age": 18.44047619047619,
-      "avg_raze_lifespan": null
-    },
-    "EDA SOUTH": {
-      "avg_current_age": 91.33333333333333,
-      "avg_raze_lifespan": 78.0
-    },
-    "NI": {
-      "avg_current_age": 110.125,
-      "avg_raze_lifespan": 126.0
-    },
-    "WASHINGTON PARK MALL NS": {
-      "avg_current_age": 57.5,
-      "avg_raze_lifespan": null
-    },
-    "NS": {
-      "avg_current_age": 92.60665137614679,
-      "avg_raze_lifespan": 87.0
-    },
-    "CHARLESTOWN MARITIME ECONOMY RESERVE": {
-      "avg_current_age": 101.88235294117646,
-      "avg_raze_lifespan": null
-    },
-    "HUNTINGTON AVENUE BOULEVARD AREA": {
-      "avg_current_age": 70.85714285714286,
-      "avg_raze_lifespan": null
-    },
-    "RH-1500": {
-      "avg_current_age": 124.61611374407583,
-      "avg_raze_lifespan": null
-    },
-    "18S": {
-      "avg_current_age": 89.66666666666667,
-      "avg_raze_lifespan": null
-    },
-    "LEATHER DISTRICT": {
-      "avg_current_age": 87.04545454545455,
-      "avg_raze_lifespan": null
-    },
-    "2F-7000": {
-      "avg_current_age": 103.9,
-      "avg_raze_lifespan": 105.0
-    },
-    "STATE HOUSE PROTECTION AREA": {
-      "avg_current_age": 98.71428571428571,
-      "avg_raze_lifespan": null
-    },
-    "OS-G": {
-      "avg_current_age": 101.72340425531915,
-      "avg_raze_lifespan": null
-    },
-    "1A": {
-      "avg_current_age": 42.0,
-      "avg_raze_lifespan": null
-    },
-    "BEACH/KNAPP PROTECTION AREA": {
-      "avg_current_age": 115.14285714285714,
-      "avg_raze_lifespan": null
-    },
-    "C-1": {
-      "avg_current_age": 45.0,
-      "avg_raze_lifespan": null
-    },
-    "MFR/LS-2": {
-      "avg_current_age": 115.36,
-      "avg_raze_lifespan": null
-    },
-    "BETH ISRAEL HOSPITAL INSTITUTIONAL DISTRICT": {
-      "avg_current_age": 76.33333333333333,
-      "avg_raze_lifespan": null
-    },
-    "L-1": {
-      "avg_current_age": 72.4375,
-      "avg_raze_lifespan": null
-    },
-    "NEW BOSTON GARDEN DEVELOPMENT AREA": {
-      "avg_current_age": 19.6,
-      "avg_raze_lifespan": null
-    },
-    "Mass Ave NS-1": {
-      "avg_current_age": 114.0625,
-      "avg_raze_lifespan": null
-    },
-    "NEWSPAPER ROW/OLD SOUTH PROTECTION AREA": {
-      "avg_current_age": 100.57142857142857,
-      "avg_raze_lifespan": null
-    },
-    "NORTH BOYLSTON NS-3": {
-      "avg_current_age": 59.0,
-      "avg_raze_lifespan": null
-    },
-    "LI": {
-      "avg_current_age": 83.72131147540983,
-      "avg_raze_lifespan": 92.81818181818181
-    },
-    "First St. LI": {
-      "avg_current_age": 82.18181818181819,
       "avg_raze_lifespan": null
     },
     "B-2": {
       "avg_current_age": 105.0,
       "avg_raze_lifespan": null
     },
-    "GROVE HALL NS": {
-      "avg_current_age": 103.26666666666667,
+    "CREATIVE INDUSTRIAL": {
+      "avg_current_age": 96.40425531914893,
+      "avg_raze_lifespan": 117.0
+    },
+    "2": {
+      "avg_current_age": 68.0,
+      "avg_raze_lifespan": null
+    },
+    "MU-1": {
+      "avg_current_age": 57.583333333333336,
       "avg_raze_lifespan": 105.0
     },
-    "NDA": {
-      "avg_current_age": 87.95744680851064,
-      "avg_raze_lifespan": 94.0
-    },
-    "M-1": {
-      "avg_current_age": 75.83076923076923,
-      "avg_raze_lifespan": 44.5
-    },
-    "B-6-90b": {
-      "avg_current_age": 126.0,
-      "avg_raze_lifespan": null
-    },
-    "CC-2": {
-      "avg_current_age": 94.66666666666667,
-      "avg_raze_lifespan": 103.0
-    },
-    "CHARLESTOWN NAVY YARD SUBDISTRICT": {
-      "avg_current_age": 91.3,
-      "avg_raze_lifespan": null
-    },
-    "OS-CM": {
-      "avg_current_age": 82.53416149068323,
-      "avg_raze_lifespan": 90.5
-    },
-    "ALLSTON LANDING NORTH EDA": {
-      "avg_current_age": 54.375,
-      "avg_raze_lifespan": 75.0
-    },
-    "2F-3000": {
-      "avg_current_age": 99.69377990430623,
-      "avg_raze_lifespan": null
-    },
-    "OS-RC": {
-      "avg_current_age": 96.10840707964601,
-      "avg_raze_lifespan": 98.0
-    },
-    "RH-2000": {
-      "avg_current_age": 123.96124031007751,
-      "avg_raze_lifespan": null
-    },
-    "CITY HALL MEDIUM DENSITY AREA": {
-      "avg_current_age": 102.75,
-      "avg_raze_lifespan": null
-    },
-    "M-8": {
-      "avg_current_age": 120.0,
-      "avg_raze_lifespan": null
-    },
-    "B-1-55": {
-      "avg_current_age": 34.0,
-      "avg_raze_lifespan": null
-    },
-    "TURNPIKE AIR-RIGHTS SPECIAL STUDY AREA": {
-      "avg_current_age": 75.0,
-      "avg_raze_lifespan": null
-    },
-    "MYSTIC RIVER WATERFRONT MANUFACTURING": {
-      "avg_current_age": 101.57142857142857,
-      "avg_raze_lifespan": null
-    },
-    "OS-A": {
-      "avg_current_age": 69.0,
-      "avg_raze_lifespan": 125.0
-    },
-    "BROAD STREET PROTECTION AREA": {
-      "avg_current_age": 110.6,
-      "avg_raze_lifespan": null
-    },
-    "1F-4000": {
-      "avg_current_age": 99.15601503759399,
-      "avg_raze_lifespan": 85.5
-    },
-    "BOYLSTON STREET PROTECTION AREA": {
-      "avg_current_age": 73.5,
-      "avg_raze_lifespan": null
-    },
-    "3F-D-4000": {
-      "avg_current_age": 113.52941176470588,
-      "avg_raze_lifespan": null
-    },
-    "DIMOCK STREET CF": {
-      "avg_current_age": 92.33333333333333,
-      "avg_raze_lifespan": null
-    },
-    "WMU": {
-      "avg_current_age": 77.88888888888889,
-      "avg_raze_lifespan": 118.0
-    },
-    "LI-2": {
-      "avg_current_age": 73.48648648648648,
-      "avg_raze_lifespan": null
-    },
-    "NE DEACONESS HOSPITAL INSTITUTIONAL DISTRICT": {
-      "avg_current_age": 100.33333333333333,
-      "avg_raze_lifespan": null
-    },
-    "1F-6000": {
-      "avg_current_age": 88.94237288135594,
-      "avg_raze_lifespan": 76.17241379310344
-    },
-    "OS-UP": {
-      "avg_current_age": 93.06896551724138,
-      "avg_raze_lifespan": null
-    },
-    "WHARF STREET RESTRICTED GROWTH AREA": {
-      "avg_current_age": 8.0,
-      "avg_raze_lifespan": null
-    },
-    "1F-3000": {
-      "avg_current_age": 114.27272727272727,
-      "avg_raze_lifespan": null
-    },
-    "WE": {
-      "avg_current_age": 93.0,
-      "avg_raze_lifespan": null
-    },
-    "MERCANTILE NS": {
-      "avg_current_age": 126.0,
-      "avg_raze_lifespan": null
-    },
-    "LIBERTY TREE PROTECTION AREA": {
-      "avg_current_age": 70.0,
-      "avg_raze_lifespan": null
-    },
-    "M-4": {
-      "avg_current_age": 96.21212121212122,
-      "avg_raze_lifespan": null
-    },
-    "C-2": {
-      "avg_current_age": 112.0,
-      "avg_raze_lifespan": null
-    },
-    "2F-9000": {
-      "avg_current_age": 111.33676975945018,
-      "avg_raze_lifespan": 123.66666666666667
-    },
-    "Lower Mills NS": {
-      "avg_current_age": 101.125,
-      "avg_raze_lifespan": null
-    },
-    "1F-8000": {
-      "avg_current_age": 98.75913978494624,
-      "avg_raze_lifespan": 111.66666666666667
-    },
-    "NORTHERN AVENUE TRANSITION ZONE": {
-      "avg_current_age": 9.5,
-      "avg_raze_lifespan": null
-    },
-    "CHINATOWN GATEWAY SPECIAL STUDY AREA": {
-      "avg_current_age": 50.5,
+    "ALBANY STREET MEDICAL AREA CF": {
+      "avg_current_age": 55.0,
       "avg_raze_lifespan": null
     },
     "COMMERCIAL CHINATOWN": {
       "avg_current_age": 102.75,
       "avg_raze_lifespan": null
     },
-    "ST CECILIA SPECIAL STUDY AREA": {
-      "avg_current_age": 93.25,
+    "1": {
+      "avg_current_age": 72.75,
       "avg_raze_lifespan": null
     },
-    "B-8-120c": {
-      "avg_current_age": 107.84615384615384,
+    "Mass Ave NS-2": {
+      "avg_current_age": 40.666666666666664,
       "avg_raze_lifespan": null
     },
-    "B-8": {
-      "avg_current_age": 108.85714285714286,
+    "CONGRESS/STATE STREET MEDIUM DENSITY AREA": {
+      "avg_current_age": 57.0,
       "avg_raze_lifespan": null
     },
-    "DOWNTOWN WATERFRONT SUBDISTRICT": {
-      "avg_current_age": 63.5,
+    "WHARF STREET RESTRICTED GROWTH AREA": {
+      "avg_current_age": 8.0,
       "avg_raze_lifespan": null
     },
-    "GROVE HALL IDA": {
-      "avg_current_age": 112.5125,
+    "3F-6000": {
+      "avg_current_age": 99.06505295007564,
+      "avg_raze_lifespan": 94.0
+    },
+    "MFR": {
+      "avg_current_age": 104.60911713791114,
+      "avg_raze_lifespan": 112.22727272727273
+    },
+    "OS-RC": {
+      "avg_current_age": 96.10840707964601,
+      "avg_raze_lifespan": 98.0
+    },
+    "B-6-90b": {
+      "avg_current_age": 126.0,
+      "avg_raze_lifespan": null
+    },
+    "I-2": {
+      "avg_current_age": 70.91891891891892,
+      "avg_raze_lifespan": null
+    },
+    "B-8-120a": {
+      "avg_current_age": 115.3030303030303,
+      "avg_raze_lifespan": null
+    },
+    "NORTH END LOCAL BUSINESS SUBDISTRICT": {
+      "avg_current_age": 72.5,
+      "avg_raze_lifespan": null
+    },
+    "B-8-120b": {
+      "avg_current_age": 82.92,
+      "avg_raze_lifespan": null
+    },
+    "WATERFRONT TRANSITION ZONE": {
+      "avg_current_age": 95.0,
+      "avg_raze_lifespan": null
+    },
+    "CC-1": {
+      "avg_current_age": 63.758620689655174,
+      "avg_raze_lifespan": 119.0
+    },
+    "Fields Corner CC": {
+      "avg_current_age": 92.0,
+      "avg_raze_lifespan": null
+    },
+    "DUDLEY SQUARE EDA": {
+      "avg_current_age": 97.14117647058823,
+      "avg_raze_lifespan": 114.0
+    },
+    "LOWER MILLS SHORELAND OPEN SPACE SUBDISTRICT": {
+      "avg_current_age": 120.0,
+      "avg_raze_lifespan": null
+    },
+    "BOSTON COLLEGE IS": {
+      "avg_current_age": 68.0,
+      "avg_raze_lifespan": null
+    },
+    "17N": {
+      "avg_current_age": 26.0,
+      "avg_raze_lifespan": null
+    },
+    "RESIDENTIAL CHINATOWN": {
+      "avg_current_age": 113.75342465753425,
+      "avg_raze_lifespan": null
+    },
+    "EDA SOUTH": {
+      "avg_current_age": 91.33333333333333,
+      "avg_raze_lifespan": 78.0
+    },
+    "S0": {
+      "avg_current_age": 108.8013698630137,
+      "avg_raze_lifespan": 82.0
+    },
+    "STUART STREET/WASHINGTON STREET PROTECTION AREA": {
+      "avg_current_age": 117.875,
+      "avg_raze_lifespan": null
+    },
+    "CC-4": {
+      "avg_current_age": 24.5,
+      "avg_raze_lifespan": null
+    },
+    "CHARLESTOWN GENERAL INDUSTRIAL": {
+      "avg_current_age": 79.4,
+      "avg_raze_lifespan": 41.0
+    },
+    "OS-P": {
+      "avg_current_age": 95.5910931174089,
+      "avg_raze_lifespan": 59.666666666666664
+    },
+    "ALLEGHANY CF": {
+      "avg_current_age": 74.66666666666667,
+      "avg_raze_lifespan": null
+    },
+    "NS": {
+      "avg_current_age": 92.60665137614679,
+      "avg_raze_lifespan": 87.0
+    },
+    "CLAM POINT WATERFRONT SERVICE": {
+      "avg_current_age": 71.0,
+      "avg_raze_lifespan": 49.0
+    },
+    "OS-G": {
+      "avg_current_age": 101.72340425531915,
+      "avg_raze_lifespan": null
+    },
+    "1F-9000": {
+      "avg_current_age": 80.01863799283154,
       "avg_raze_lifespan": 75.0
     },
-    "CREATIVE INDUSTRIAL": {
-      "avg_current_age": 96.40425531914893,
-      "avg_raze_lifespan": 117.0
+    "3F-D-3000": {
+      "avg_current_age": 111.38415366146458,
+      "avg_raze_lifespan": 107.66666666666667
     },
-    "9": {
-      "avg_current_age": 5.0,
+    "2F": {
+      "avg_current_age": 105.76712328767124,
       "avg_raze_lifespan": null
     },
-    "LI-1": {
-      "avg_current_age": 85.14814814814815,
+    "NORTH END PLAYGROUND RECREATION OPEN SPACE SUBDISTRICT": {
+      "avg_current_age": 126.0,
       "avg_raze_lifespan": null
     },
-    "ST BOTOLPH STREET PROTECTION AREA": {
-      "avg_current_age": 94.25405405405405,
-      "avg_raze_lifespan": 112.0
+    "GATEWAY INDUSTRIAL": {
+      "avg_current_age": 66.63414634146342,
+      "avg_raze_lifespan": 75.0
     },
-    "Brookline Ave CC": {
-      "avg_current_age": 63.72727272727273,
-      "avg_raze_lifespan": 96.0
+    "NS-2": {
+      "avg_current_age": 97.01785714285714,
+      "avg_raze_lifespan": 87.83333333333333
+    },
+    "WILLIAM J. BARRY PLAYGROUND RECREATION OPEN SPACE": {
+      "avg_current_age": 25.0,
+      "avg_raze_lifespan": null
+    },
+    "COMMUNITY COLLEGE CF": {
+      "avg_current_age": 90.88235294117646,
+      "avg_raze_lifespan": null
+    },
+    "EGLESTON SQUARE NS": {
+      "avg_current_age": 99.72727272727273,
+      "avg_raze_lifespan": null
     },
     "BOSTON WHARF TRANSITION ZONE": {
       "avg_current_age": 9.285714285714286,
       "avg_raze_lifespan": null
     },
-    "LITTLE MYSTIC WATERFRONT RESIDENTIAL": {
-      "avg_current_age": 50.0,
+    "Fenway Triangle NDA": {
+      "avg_current_age": 100.12,
       "avg_raze_lifespan": null
     },
-    "STATE STREET PROTECTION AREA": {
-      "avg_current_age": 92.6875,
-      "avg_raze_lifespan": null
-    },
-    "BLOSSOM STREET RESTRICTED GROWTH AREA": {
-      "avg_current_age": 72.6,
+    "H-3-65": {
+      "avg_current_age": 81.82161594963274,
       "avg_raze_lifespan": null
     },
     "CUF": {
       "avg_current_age": 81.5,
       "avg_raze_lifespan": null
     },
-    "2F-5000": {
-      "avg_current_age": 104.11763365735115,
+    "COMMERCIAL WHARF NS": {
+      "avg_current_age": 100.0,
+      "avg_raze_lifespan": null
+    },
+    "RH-1500": {
+      "avg_current_age": 124.61611374407583,
+      "avg_raze_lifespan": null
+    },
+    "M-1-55": {
+      "avg_current_age": 126.0,
+      "avg_raze_lifespan": null
+    },
+    "NORTH END WATERFRONT SUBDISTRICT": {
+      "avg_current_age": 64.91666666666667,
+      "avg_raze_lifespan": null
+    },
+    "L-2": {
+      "avg_current_age": 108.0,
+      "avg_raze_lifespan": null
+    },
+    "NORTH WASHINGTON ST CC": {
+      "avg_current_age": 101.34285714285714,
+      "avg_raze_lifespan": null
+    },
+    "CHARLESTOWN GATEWAY SUBDISTRICT": {
+      "avg_current_age": 63.666666666666664,
+      "avg_raze_lifespan": null
+    },
+    "H-3": {
+      "avg_current_age": 73.28888888888889,
+      "avg_raze_lifespan": 67.0
+    },
+    "B-1-55": {
+      "avg_current_age": 34.0,
+      "avg_raze_lifespan": null
+    },
+    "NEWMARKET IDA": {
+      "avg_current_age": 72.96428571428571,
+      "avg_raze_lifespan": 60.0
+    },
+    "S3": {
+      "avg_current_age": 91.95238095238095,
+      "avg_raze_lifespan": null
+    },
+    "CEDAR GROVE WATERFRONT MANUFACTURING SUBDISTRICT": {
+      "avg_current_age": 23.0,
+      "avg_raze_lifespan": null
+    },
+    "H-2-65": {
+      "avg_current_age": 112.82790309106099,
+      "avg_raze_lifespan": null
+    },
+    "LI-1": {
+      "avg_current_age": 85.14814814814815,
+      "avg_raze_lifespan": null
+    },
+    "B-6-90a": {
+      "avg_current_age": 108.28888888888889,
+      "avg_raze_lifespan": null
+    },
+    "LI-2": {
+      "avg_current_age": 73.48648648648648,
+      "avg_raze_lifespan": null
+    },
+    "GOVERNMENT CENTER/CAA": {
+      "avg_current_age": 41.0,
+      "avg_raze_lifespan": null
+    },
+    "MCOP INSTITUTIONAL DISTRICT": {
+      "avg_current_age": 120.0,
+      "avg_raze_lifespan": null
+    },
+    "NEPOSET SHORELAND OPEN SPACE SUBDISTRICT": {
+      "avg_current_age": 93.6,
+      "avg_raze_lifespan": null
+    },
+    "B-8": {
+      "avg_current_age": 108.85714285714286,
+      "avg_raze_lifespan": null
+    },
+    "DANA FARBER CANCER INTITUTE IS": {
+      "avg_current_age": 17.0,
+      "avg_raze_lifespan": null
+    },
+    "HANOVER CC": {
+      "avg_current_age": 112.26771653543307,
+      "avg_raze_lifespan": 168.0
+    },
+    "1F-6000": {
+      "avg_current_age": 88.94237288135594,
+      "avg_raze_lifespan": 76.17241379310344
+    },
+    "WENTWORTH INSTITUTE IS": {
+      "avg_current_age": 100.28571428571429,
+      "avg_raze_lifespan": null
+    },
+    "GROVE HALL IDA": {
+      "avg_current_age": 112.5125,
+      "avg_raze_lifespan": 75.0
+    },
+    "SAVIN HILL LC": {
+      "avg_current_age": 76.66666666666667,
+      "avg_raze_lifespan": null
+    },
+    "Western Avenue/Soldiers Field Road CC-1": {
+      "avg_current_age": 65.20689655172414,
+      "avg_raze_lifespan": 66.0
+    },
+    "NI-VA-1": {
+      "avg_current_age": 105.0,
+      "avg_raze_lifespan": null
+    },
+    "7W": {
+      "avg_current_age": 22.0,
+      "avg_raze_lifespan": null
+    },
+    "E St. LI": {
+      "avg_current_age": 21.0,
+      "avg_raze_lifespan": null
+    },
+    "STATE STREET PROTECTION AREA": {
+      "avg_current_age": 92.6875,
+      "avg_raze_lifespan": null
+    },
+    "DIMOCK STREET CF": {
+      "avg_current_age": 92.33333333333333,
+      "avg_raze_lifespan": null
+    },
+    "3F-4000": {
+      "avg_current_age": 105.22154858825567,
+      "avg_raze_lifespan": 101.70833333333333
+    },
+    "H-2": {
+      "avg_current_age": 101.81481481481481,
+      "avg_raze_lifespan": null
+    },
+    "Boston Landing CC-1": {
+      "avg_current_age": 88.61538461538461,
+      "avg_raze_lifespan": 74.0
+    },
+    "BRAINTREE STREET LI-1": {
+      "avg_current_age": 62.642857142857146,
+      "avg_raze_lifespan": 2.0
+    },
+    "4": {
+      "avg_current_age": 98.33333333333333,
+      "avg_raze_lifespan": null
+    },
+    "MU-7": {
+      "avg_current_age": 92.56521739130434,
+      "avg_raze_lifespan": null
+    },
+    "WARREN STREET CF": {
+      "avg_current_age": 96.92307692307692,
+      "avg_raze_lifespan": 116.0
+    },
+    "LC-.5": {
+      "avg_current_age": 90.0,
+      "avg_raze_lifespan": null
+    },
+    "3F-D-2000": {
+      "avg_current_age": 110.21944444444445,
+      "avg_raze_lifespan": 31.0
+    },
+    "ALLSTON LANDING NORTH EDA": {
+      "avg_current_age": 54.375,
+      "avg_raze_lifespan": 75.0
+    },
+    "DOWNTOWN WATERFRONT SUBDISTRICT": {
+      "avg_current_age": 63.5,
+      "avg_raze_lifespan": null
+    },
+    "SOUTH BOSTON MARITIME ECONOMY RESERVE": {
+      "avg_current_age": 57.0,
+      "avg_raze_lifespan": 96.0
+    },
+    "LI": {
+      "avg_current_age": 83.72131147540983,
+      "avg_raze_lifespan": 92.81818181818181
+    },
+    "R1": {
+      "avg_current_age": 79.22524483133841,
+      "avg_raze_lifespan": 64.0
+    },
+    "LIBERTY TREE PROTECTION AREA": {
+      "avg_current_age": 70.0,
+      "avg_raze_lifespan": null
+    },
+    "BAY VILLAGE PROTECTION AREA": {
+      "avg_current_age": 119.2,
+      "avg_raze_lifespan": null
+    },
+    "H-1-50": {
+      "avg_current_age": 34.578947368421055,
+      "avg_raze_lifespan": 120.5
+    },
+    "OS-SL": {
+      "avg_current_age": 85.5,
+      "avg_raze_lifespan": null
+    },
+    "CPS IMP": {
+      "avg_current_age": 132.5,
+      "avg_raze_lifespan": null
+    },
+    "CHARLESTOWN NAVY YARD SUBDISTRICT": {
+      "avg_current_age": 91.3,
+      "avg_raze_lifespan": null
+    },
+    "LITTLE MYSTIC WATERFRONT RESIDENTIAL": {
+      "avg_current_age": 50.0,
+      "avg_raze_lifespan": null
+    },
+    "BOYLSTON STREET PROTECTION AREA": {
+      "avg_current_age": 73.5,
+      "avg_raze_lifespan": null
+    },
+    "3F-3000": {
+      "avg_current_age": 114.27868852459017,
+      "avg_raze_lifespan": null
+    },
+    "EBR-2.5": {
+      "avg_current_age": 91.91150442477876,
+      "avg_raze_lifespan": 65.0
+    },
+    "NEWSPAPER ROW/OLD SOUTH PROTECTION AREA": {
+      "avg_current_age": 100.57142857142857,
+      "avg_raze_lifespan": null
+    },
+    "CITY HALL MEDIUM DENSITY AREA": {
+      "avg_current_age": 102.75,
+      "avg_raze_lifespan": null
+    },
+    "HISTORIC CHINATOWN PROTECTION AREA": {
+      "avg_current_age": 116.53012048192771,
+      "avg_raze_lifespan": null
+    },
+    "LIA": {
+      "avg_current_age": 88.97674418604652,
+      "avg_raze_lifespan": null
+    },
+    "MYSTIC RIVER WATERFRONT MANUFACTURING": {
+      "avg_current_age": 101.57142857142857,
+      "avg_raze_lifespan": null
+    },
+    "NE/CAA": {
+      "avg_current_age": 97.8,
+      "avg_raze_lifespan": 86.0
+    },
+    "OS-UP": {
+      "avg_current_age": 93.06896551724138,
+      "avg_raze_lifespan": null
+    },
+    "PARCEL-TO-PARCEL LINKAGE DEVELOPMENT AREA": {
+      "avg_current_age": 92.0,
+      "avg_raze_lifespan": null
+    },
+    "TREMONT CF": {
+      "avg_current_age": 110.5,
+      "avg_raze_lifespan": null
+    },
+    "2F-4000": {
+      "avg_current_age": 114.44206008583691,
+      "avg_raze_lifespan": null
+    },
+    "Adams Street NS": {
+      "avg_current_age": 106.71428571428571,
+      "avg_raze_lifespan": null
+    },
+    "LADDER BLOCKS AND WASHINGTON STREET THEATRE PROTECTION AREA": {
+      "avg_current_age": 113.02127659574468,
+      "avg_raze_lifespan": null
+    },
+    "3F-D_2000": {
+      "avg_current_age": 111.55555555555556,
+      "avg_raze_lifespan": null
+    },
+    "BEACH/KNAPP PROTECTION AREA": {
+      "avg_current_age": 115.14285714285714,
+      "avg_raze_lifespan": null
+    },
+    "HUNTINGTON AVENUE BOULEVARD AREA": {
+      "avg_current_age": 70.85714285714286,
+      "avg_raze_lifespan": null
+    },
+    "WALNUT AVENUE CF": {
+      "avg_current_age": 126.0,
+      "avg_raze_lifespan": null
+    },
+    "3F-7000": {
+      "avg_current_age": 115.24747474747475,
+      "avg_raze_lifespan": 99.0
+    },
+    "IDA": {
+      "avg_current_age": 85.61538461538461,
+      "avg_raze_lifespan": null
+    },
+    "NORTH BOYLSTON NS-3": {
+      "avg_current_age": 59.0,
+      "avg_raze_lifespan": null
+    },
+    "WM": {
+      "avg_current_age": 62.357142857142854,
+      "avg_raze_lifespan": null
+    },
+    "HARVARD UNIVERSITY IS": {
+      "avg_current_age": 55.0,
+      "avg_raze_lifespan": null
+    },
+    "S1": {
+      "avg_current_age": 105.42758620689655,
       "avg_raze_lifespan": 109.0
+    },
+    "Barrys Corner CC-1": {
+      "avg_current_age": 82.78571428571429,
+      "avg_raze_lifespan": null
+    },
+    "LITTLE MYSTIC WATERFRONT ACCESS OPEN SPACE": {
+      "avg_current_age": 76.0,
+      "avg_raze_lifespan": null
+    },
+    "ST PATRICK NS": {
+      "avg_current_age": 115.66666666666667,
+      "avg_raze_lifespan": null
+    },
+    "3F-5000": {
+      "avg_current_age": 106.6153035095647,
+      "avg_raze_lifespan": 105.17391304347827
+    },
+    "INSTITUTIONAL": {
+      "avg_current_age": 73.92857142857143,
+      "avg_raze_lifespan": null
+    },
+    "ST CECILIA SPECIAL STUDY AREA": {
+      "avg_current_age": 93.25,
+      "avg_raze_lifespan": null
+    },
+    "TURNPIKE AIR-RIGHTS SPECIAL STUDY AREA": {
+      "avg_current_age": 75.0,
+      "avg_raze_lifespan": null
+    },
+    "MARKETS PROTECTION AREA": {
+      "avg_current_age": 97.0,
+      "avg_raze_lifespan": 117.0
+    },
+    "BULFINCH TRIANGLE/CAA": {
+      "avg_current_age": 14.0,
+      "avg_raze_lifespan": null
+    },
+    "MU-4": {
+      "avg_current_age": 97.41772151898734,
+      "avg_raze_lifespan": 105.0
+    },
+    "CUSTOM HOUSE MEDIUM DENSITY AREA": {
+      "avg_current_age": 98.125,
+      "avg_raze_lifespan": null
+    },
+    "NI": {
+      "avg_current_age": 110.125,
+      "avg_raze_lifespan": 126.0
+    },
+    "CHINATOWN GATEWAY SPECIAL STUDY AREA": {
+      "avg_current_age": 50.5,
+      "avg_raze_lifespan": null
+    },
+    "CPS": {
+      "avg_current_age": 73.7135922330097,
+      "avg_raze_lifespan": 104.0
+    },
+    "1F-8000": {
+      "avg_current_age": 98.75913978494624,
+      "avg_raze_lifespan": 111.66666666666667
+    },
+    "ST BOTOLPH STREET PROTECTION AREA": {
+      "avg_current_age": 94.25405405405405,
+      "avg_raze_lifespan": 112.0
+    },
+    "CORE INDUSTRIAL": {
+      "avg_current_age": 68.5,
+      "avg_raze_lifespan": null
+    },
+    "SALEM ST NS": {
+      "avg_current_age": 101.96551724137932,
+      "avg_raze_lifespan": 104.0
+    },
+    "CC-2": {
+      "avg_current_age": 94.66666666666667,
+      "avg_raze_lifespan": 103.0
+    },
+    "MFR-2": {
+      "avg_current_age": 92.176,
+      "avg_raze_lifespan": 88.0
     }
   },
   "zoning_district_stats": {

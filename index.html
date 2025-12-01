@@ -458,6 +458,16 @@
                 </div>
             </div>
 
+            <div style="display: flex; align-items: center;">
+                <label style="font-size: 0.9em; margin-right: 8px; font-weight: 500;">Metric:</label>
+                <select id="structMetric" onchange="updateStructureHeatmapUI()" style="padding: 4px; font-size: 0.9em;">
+                    <option value="count" selected>Count</option>
+                    <option value="area">Gross Area (sq ft)</option>
+                </select>
+            </div>
+
+            <div style="border-left: 1px solid #ccc; height: 20px;"></div>
+
             <p style="color: #666; font-size: 0.9em; margin-bottom: 15px;">
                 Distribution of building lifespans by Structure Class. Use <strong>Log Scale</strong> to better visualize smaller values alongside large outliers.
             </p>
@@ -818,10 +828,9 @@ function updateStructureHeatmapUI() {
     if (!currentData) return;
     const binSize = document.getElementById('structBinSize').value;
     const useLog = document.getElementById('structLogScale').checked;
+    const metric = document.getElementById('structMetric').value; // <--- 获取 Metric
     
-    // We do not filter by “Show Closed Only” because the current Python output only contains the full dataset.
-    // If you later generate a closed-only dataset, you can switch logic here.
-    createStructureHeatmap(currentData, binSize, useLog);
+    createStructureHeatmap(currentData, binSize, useLog, metric); // <--- 传递 Metric
 }
 
 // --- Modified: Enhanced color function (supports Log mode) ---
@@ -864,12 +873,10 @@ function getHeatmapColor(value, maxValue, useLog = false) {
     return { bg: bgString, text: textString };
 }
 
-// --- Modified: Main render function ---
-function createStructureHeatmap(data, binSizeStr, useLog) {
+function createStructureHeatmap(data, binSizeStr, useLog, metric = 'count') {
     const container = document.getElementById('structureHeatmapContent');
     if (!container) return;
 
-    // 1. Get data for the selected bin size
     const binKey = `bin_${binSizeStr}`;
     const heatmapData = data.structure_class_heatmap ? data.structure_class_heatmap[binKey] : null;
 
@@ -878,7 +885,6 @@ function createStructureHeatmap(data, binSizeStr, useLog) {
         return;
     }
 
-    // 2. Prepare columns (bins) - sorted numerically
     const allBins = new Set();
     Object.values(heatmapData).forEach(row => {
         Object.keys(row).forEach(bin => allBins.add(bin));
@@ -890,72 +896,91 @@ function createStructureHeatmap(data, binSizeStr, useLog) {
         return startA - startB;
     });
 
-    // 3. Prepare rows (classes) - sorted by total descending
-    const rowTotals = {};
+    const sortTotals = {};
     Object.keys(heatmapData).forEach(cls => {
-        rowTotals[cls] = Object.values(heatmapData[cls]).reduce((a, b) => a + b, 0);
+        sortTotals[cls] = Object.values(heatmapData[cls]).reduce((acc, obj) => acc + (obj.count || 0), 0);
+    });
+
+    const displayTotals = {};
+    Object.keys(heatmapData).forEach(cls => {
+        displayTotals[cls] = Object.values(heatmapData[cls]).reduce((acc, obj) => {
+            const val = (metric === 'area') ? (obj.area || 0) : (obj.count || 0);
+            return acc + val;
+        }, 0);
     });
     
     const sortedClasses = Object.keys(heatmapData).sort((a, b) => {
-        if (a === 'Unknown') return 1;  // Place Unknown last
+        if (a === 'Unknown') return 1;
         if (b === 'Unknown') return -1;
-        return rowTotals[b] - rowTotals[a];
+        return sortTotals[b] - sortTotals[a];
     });
 
-    // 4. Find global maximum value (for color scaling)
     let maxValue = 0;
     Object.values(heatmapData).forEach(row => {
-        Object.values(row).forEach(val => {
+        Object.values(row).forEach(obj => {
+            const val = (metric === 'area') ? (obj.area || 0) : (obj.count || 0);
             if (val > maxValue) maxValue = val;
         });
     });
 
-    // 5. Generate HTML table
     let html = '<div class="heatmap-container"><table class="heatmap-table">';
     
-    // Header row
     html += '<thead><tr><th class="row-header" style="background:#fff; border-bottom:2px solid #333;">Structure Class</th>';
     sortedBins.forEach(bin => {
         html += `<th>${bin}</th>`;
     });
     html += '<th style="background:#333;">Total</th></tr></thead><tbody>';
 
-    // Table rows
     sortedClasses.forEach(cls => {
         html += `<tr><td class="row-label">${cls}</td>`;
         
         sortedBins.forEach(bin => {
-            const val = heatmapData[cls][bin] || 0;
+            const cellObj = heatmapData[cls][bin] || {count: 0, area: 0};
+            const val = (metric === 'area') ? cellObj.area : cellObj.count;
             
-            // Use the new color function
             const styles = getHeatmapColor(val, maxValue, useLog);
             
-            // Show numbers only if val > 0, use bold text
-            const cellContent = val > 0 ? val.toLocaleString() : '';
+            let displayVal = '';
+            if (val > 0) {
+                if (metric === 'area') {
+                    if (val > 1000000) displayVal = (val / 1000000).toFixed(1) + 'M';
+                    else if (val > 1000) displayVal = (val / 1000).toFixed(0) + 'k';
+                    else displayVal = val.toLocaleString();
+                } else {
+                    displayVal = val.toLocaleString();
+                }
+            }
             
-            html += `<td style="background-color: ${styles.bg}; color: ${styles.text}; font-weight: ${val > 0 ? '600' : 'normal'};" 
-                         title="${cls} (${bin}): ${val}">`;
-            html += `<div class="heatmap-cell">${cellContent}</div>`;
+            const tooltip = `${cls} (${bin})\nCount: ${cellObj.count.toLocaleString()}\nArea: ${(cellObj.area || 0).toLocaleString()} sq ft`;
+            
+            html += `<td style="background-color: ${styles.bg}; color: ${styles.text}; font-weight: ${val > 0 ? '600' : 'normal'}; cursor: help;" 
+                         title="${tooltip}">`;
+            html += `<div class="heatmap-cell">${displayVal}</div>`;
             html += `</td>`;
         });
         
-        // Row total
-        html += `<td style="font-weight:bold; background:#f1f1f1; border-left:2px solid #ddd;">${rowTotals[cls].toLocaleString()}</td>`;
+        const totalVal = displayTotals[cls];
+        let displayTotal = totalVal.toLocaleString();
+        
+        if (metric === 'area') {
+             if (totalVal > 1000000) displayTotal = (totalVal / 1000000).toFixed(1) + 'M';
+             else if (totalVal > 1000) displayTotal = (totalVal / 1000).toFixed(0) + 'k';
+        }
+
+        html += `<td style="font-weight:bold; background:#f1f1f1; border-left:2px solid #ddd;">${displayTotal}</td>`;
         html += `</tr>`;
     });
 
     html += '</tbody></table></div>';
     
-    // Add legend bar
     html += `<div style="margin-top:10px; font-size:0.8em; color:#666; display:flex; align-items:center; gap:10px;">
         <span>Scale (${useLog ? 'Logarithmic' : 'Linear'}): 0</span>
         <div style="width:150px; height:12px; background: linear-gradient(to right, rgb(240, 249, 33), rgb(235, 101, 105), rgb(13, 8, 135)); border-radius:2px;"></div>
-        <span>${maxValue.toLocaleString()}</span>
+        <span>${metric === 'area' ? (maxValue/1000000).toFixed(1) + 'M sq ft' : maxValue.toLocaleString()}</span>
     </div>`;
 
     container.innerHTML = html;
 }
-
 
     /**
      * Helper function: Calculates the maximum age bin needed across multiple datasets.
