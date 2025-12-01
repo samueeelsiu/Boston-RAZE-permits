@@ -71,12 +71,12 @@ def process_demolition_data(assessment_file, permit_file):
     # --- 2. Prepare property assessment data ---
     print("Processing property assessment data...")
     # Load more columns to identify buildings correctly
-    assessment_cols = ['PID', 'CM_ID', 'YR_BUILT', 'Zoning_District', 'Zoning_Subdistrict']
+    assessment_cols = ['PID', 'CM_ID', 'YR_BUILT', 'Zoning_District', 'Zoning_Subdistrict', 'STRUCTURE_CLASS']
 
     if 'CM_ID' not in prop_ass_df.columns:
         print("Warning: 'CM_ID' not found in assessment data. Condominium logic will be skipped.")
         # Still include zoning columns
-        assessment_cols = ['PID', 'YR_BUILT', 'Zoning_District', 'Zoning_Subdistrict']
+        assessment_cols = ['PID', 'YR_BUILT', 'Zoning_District', 'Zoning_Subdistrict', 'STRUCTURE_CLASS']
 
     assessment_data = prop_ass_df[assessment_cols].copy()
     assessment_data.dropna(subset=['YR_BUILT'], inplace=True)
@@ -94,11 +94,37 @@ def process_demolition_data(assessment_file, permit_file):
     assessment_data['building_id'] = assessment_data['building_id'].astype(str).str.replace(r'\.0$', '', regex=True).str.strip().str.zfill(10)
 
     print("Aggregating build years by 'building_id' (handling condos)...")
-    # Group by the new building_id and find the earliest construction year for that building.
+
+    structure_class_map = {
+        'A': 'Struct Steel',
+        'B': 'Reinforced Concrete',
+        'C': 'Brick/Concrete',
+        'D': 'Wood/Frame',
+        'E': 'Metal',
+        'R': 'Residential'
+    }
+
+    # 1. If column is missing, create it with 'Unknown'
+    if 'STRUCTURE_CLASS' not in assessment_data.columns:
+        assessment_data['STRUCTURE_CLASS'] = 'Unknown'
+
+    # 2. NOW Run this logic for EVERYONE (Un-indented)
+    # Ensure it is string type
+    assessment_data['STRUCTURE_CLASS'] = assessment_data['STRUCTURE_CLASS'].astype(str)
+
+    # Extract the first letter code (e.g., "A" from "A - Struct Steel")
+    assessment_data['structure_class_code'] = assessment_data['STRUCTURE_CLASS'].str[0].str.upper()
+
+    # Map the code to the description
+    assessment_data['structure_class_desc'] = assessment_data['structure_class_code'].map(
+        structure_class_map).fillna('Unknown')
+
+    # 3. Now the aggregation will work because 'structure_class_desc' exists
     build_years = assessment_data.groupby('building_id').agg(
-        build_year=('YR_BUILT', 'min'),  # Get the earliest build year
-        Zoning_District=('Zoning_District', 'first'),  # Get the first zoning district
-        Zoning_Subdistrict=('Zoning_Subdistrict', 'first')  # Get the first zoning subdistrict
+        build_year=('YR_BUILT', 'min'),
+        Zoning_District=('Zoning_District', 'first'),
+        Zoning_Subdistrict=('Zoning_Subdistrict', 'first'),
+        structure_class=('structure_class_desc', 'first')
     ).reset_index()
 
     # --- NEW: Calculate current building age distribution (5-year and 10-year) ---
@@ -330,7 +356,42 @@ def process_demolition_data(assessment_file, permit_file):
 
     # --- 6. Start Aggregating Data for JSON ---
     print("Starting data aggregations for JSON export...")
+
+
     all_data = {}  # This will be our final JSON object
+
+    print("Generating Structure Class Heatmap data...")
+
+    structure_heatmap_data = {}
+
+    # We use lifespan_df (filtered for lifespan > 0)
+    unique_classes = lifespan_df['structure_class'].unique()
+    max_bin_age = 200
+
+    # Define the bin sizes we want to support
+    target_bin_sizes = [5, 10, 20]
+
+    for bin_width in target_bin_sizes:
+        bin_key = f'bin_{bin_width}'
+        structure_heatmap_data[bin_key] = {}
+
+        for struct_cls in unique_classes:
+            if pd.isna(struct_cls) or struct_cls == 'Unknown': continue
+
+            cls_df = lifespan_df[lifespan_df['structure_class'] == struct_cls]
+            bins_data = {}
+
+            for i in range(0, max_bin_age, bin_width):
+                label = f"{i}-{i + bin_width}"
+                # Count buildings in this bin
+                count = len(cls_df[(cls_df['lifespan'] >= i) & (cls_df['lifespan'] < i + bin_width)])
+                if count > 0:
+                    bins_data[label] = count
+
+            if bins_data:
+                structure_heatmap_data[bin_key][str(struct_cls)] = bins_data
+
+    all_data['structure_class_heatmap'] = structure_heatmap_data
     all_data['multi_raze_parcels'] = multi_raze_records  # This chart is not filtered by status
 
     # --- Define year span from ALL data (positive and replaced) ---

@@ -18,6 +18,70 @@
             padding: 0;
             box-sizing: border-box;
         }
+        
+        /* Heatmap Specific Styles */
+        .heatmap-container {
+            overflow-x: auto;
+            margin-top: 15px;
+            padding-bottom: 10px;
+        }
+
+        .heatmap-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 2px;
+            font-size: 0.85em;
+        }
+
+        .heatmap-table th {
+            background: #2c3e50;
+            color: white;
+            padding: 8px 5px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .heatmap-table th.row-header {
+            text-align: left;
+            padding-left: 10px;
+            background: #f8f9fa;
+            color: #2c3e50;
+            min-width: 140px;
+            position: sticky;
+            left: 0;
+            z-index: 2;
+            border-right: 2px solid #dee2e6;
+        }
+
+        .heatmap-table td {
+            padding: 0;
+            text-align: center;
+            min-width: 50px;
+            height: 35px;
+        }
+
+        .heatmap-table td.row-label {
+            background: #f8f9fa;
+            text-align: left;
+            padding-left: 10px;
+            font-weight: 600;
+            color: #2c3e50;
+            position: sticky;
+            left: 0;
+            z-index: 1;
+            border-right: 2px solid #dee2e6;
+            white-space: nowrap;
+        }
+
+        .heatmap-cell {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            color: inherit;
+        }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -370,6 +434,36 @@
         </div>
         </div>
 
+        <div class="chart-container" id="structure-heatmap-container">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h2 class="chart-title" style="margin-bottom: 0;">Structure Class vs. Lifespan Heatmap</h2>
+                
+                <div style="display: flex; gap: 15px; align-items: center; background: #f8f9fa; padding: 5px 15px; border-radius: 4px; border: 1px solid #ddd;">
+                    
+                    <div style="display: flex; align-items: center;">
+                        <label style="font-size: 0.9em; margin-right: 8px; font-weight: 500;">Bin Size:</label>
+                        <select id="structBinSize" onchange="updateStructureHeatmapUI()" style="padding: 4px; font-size: 0.9em;">
+                            <option value="5">5 Years</option>
+                            <option value="10">10 Years</option>
+                            <option value="20" selected>20 Years</option>
+                        </select>
+                    </div>
+
+                    <div style="border-left: 1px solid #ccc; height: 20px;"></div>
+
+                    <div style="display: flex; align-items: center;">
+                        <input type="checkbox" id="structLogScale" onchange="updateStructureHeatmapUI()" style="margin-right: 5px;">
+                        <label for="structLogScale" style="font-size: 0.9em; cursor: pointer; user-select: none;">Log Scale</label>
+                    </div>
+                </div>
+            </div>
+
+            <p style="color: #666; font-size: 0.9em; margin-bottom: 15px;">
+                Distribution of building lifespans by Structure Class. Use <strong>Log Scale</strong> to better visualize smaller values alongside large outliers.
+            </p>
+            <div id="structureHeatmapContent"></div>
+        </div>
+
         </div>
 
                 </div> <div class="controls">
@@ -695,6 +789,173 @@
         });
         return max;
     }
+
+    /**
+ * Helper: Generate Plasma color scale (Linear)
+ */
+function getPlasmaColor(value, maxValue) {
+    if (value === 0 || !maxValue) return '#f8f9fa'; // Light gray for zero
+    
+    // Linear scale intensity (0 to 1)
+    const intensity = Math.min(value / maxValue, 1);
+    
+    // Plasma colors (from yellow to dark purple)
+    const plasmaColors = [
+        [240, 249, 33], [248, 230, 33], [253, 206, 2], [254, 180, 31],
+        [254, 153, 61], [251, 127, 88], [235, 101, 105], [216, 77, 120],
+        [196, 54, 136], [172, 33, 152], [144, 13, 163], [114, 1, 168],
+        [82, 2, 165], [47, 7, 164], [13, 8, 135]
+    ];
+    
+    // Map intensity to color index
+    const idx = Math.floor(intensity * (plasmaColors.length - 1));
+    const rgb = plasmaColors[idx];
+    return `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+}
+
+// --- New: Dedicated update function for Structure Heatmap ---
+function updateStructureHeatmapUI() {
+    if (!currentData) return;
+    const binSize = document.getElementById('structBinSize').value;
+    const useLog = document.getElementById('structLogScale').checked;
+    
+    // We do not filter by “Show Closed Only” because the current Python output only contains the full dataset.
+    // If you later generate a closed-only dataset, you can switch logic here.
+    createStructureHeatmap(currentData, binSize, useLog);
+}
+
+// --- Modified: Enhanced color function (supports Log mode) ---
+function getHeatmapColor(value, maxValue, useLog = false) {
+    if (value === 0 || !maxValue) return { bg: '#f9f9f9', text: '#ddd' }; // Handle zero values
+
+    let intensity;
+
+    if (useLog) {
+        // Log scale: log(value) / log(max)
+        // Use Math.log(value + 1) to avoid log(0)
+        const logVal = Math.log(value + 1);
+        const logMax = Math.log(maxValue + 1);
+        intensity = logVal / logMax;
+    } else {
+        // Linear scale
+        intensity = value / maxValue;
+    }
+
+    // Plasma color palette (Yellow → Purple)
+    const plasmaColors = [
+        [240, 249, 33], [248, 230, 33], [253, 206, 2], [254, 180, 31],
+        [254, 153, 61], [251, 127, 88], [235, 101, 105], [216, 77, 120],
+        [196, 54, 136], [172, 33, 152], [144, 13, 163], [114, 1, 168],
+        [82, 2, 165], [47, 7, 164], [13, 8, 135]
+    ];
+
+    // Ensure intensity is between 0–1
+    intensity = Math.min(Math.max(intensity, 0), 1);
+    
+    const idx = Math.floor(intensity * (plasmaColors.length - 1));
+    const rgb = plasmaColors[idx];
+    const bgString = `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+
+    // --- Important: Determine font color ---
+    // If intensity > 0.45 (darker colors), use white text
+    // Otherwise use dark gray text
+    const textString = intensity > 0.45 ? '#ffffff' : '#333333';
+
+    return { bg: bgString, text: textString };
+}
+
+// --- Modified: Main render function ---
+function createStructureHeatmap(data, binSizeStr, useLog) {
+    const container = document.getElementById('structureHeatmapContent');
+    if (!container) return;
+
+    // 1. Get data for the selected bin size
+    const binKey = `bin_${binSizeStr}`;
+    const heatmapData = data.structure_class_heatmap ? data.structure_class_heatmap[binKey] : null;
+
+    if (!heatmapData || Object.keys(heatmapData).length === 0) {
+        container.innerHTML = '<p class="error-message">No data available for this bin size.</p>';
+        return;
+    }
+
+    // 2. Prepare columns (bins) - sorted numerically
+    const allBins = new Set();
+    Object.values(heatmapData).forEach(row => {
+        Object.keys(row).forEach(bin => allBins.add(bin));
+    });
+    
+    const sortedBins = Array.from(allBins).sort((a, b) => {
+        const startA = parseInt(a.split('-')[0]);
+        const startB = parseInt(b.split('-')[0]);
+        return startA - startB;
+    });
+
+    // 3. Prepare rows (classes) - sorted by total descending
+    const rowTotals = {};
+    Object.keys(heatmapData).forEach(cls => {
+        rowTotals[cls] = Object.values(heatmapData[cls]).reduce((a, b) => a + b, 0);
+    });
+    
+    const sortedClasses = Object.keys(heatmapData).sort((a, b) => {
+        if (a === 'Unknown') return 1;  // Place Unknown last
+        if (b === 'Unknown') return -1;
+        return rowTotals[b] - rowTotals[a];
+    });
+
+    // 4. Find global maximum value (for color scaling)
+    let maxValue = 0;
+    Object.values(heatmapData).forEach(row => {
+        Object.values(row).forEach(val => {
+            if (val > maxValue) maxValue = val;
+        });
+    });
+
+    // 5. Generate HTML table
+    let html = '<div class="heatmap-container"><table class="heatmap-table">';
+    
+    // Header row
+    html += '<thead><tr><th class="row-header" style="background:#fff; border-bottom:2px solid #333;">Structure Class</th>';
+    sortedBins.forEach(bin => {
+        html += `<th>${bin}</th>`;
+    });
+    html += '<th style="background:#333;">Total</th></tr></thead><tbody>';
+
+    // Table rows
+    sortedClasses.forEach(cls => {
+        html += `<tr><td class="row-label">${cls}</td>`;
+        
+        sortedBins.forEach(bin => {
+            const val = heatmapData[cls][bin] || 0;
+            
+            // Use the new color function
+            const styles = getHeatmapColor(val, maxValue, useLog);
+            
+            // Show numbers only if val > 0, use bold text
+            const cellContent = val > 0 ? val.toLocaleString() : '';
+            
+            html += `<td style="background-color: ${styles.bg}; color: ${styles.text}; font-weight: ${val > 0 ? '600' : 'normal'};" 
+                         title="${cls} (${bin}): ${val}">`;
+            html += `<div class="heatmap-cell">${cellContent}</div>`;
+            html += `</td>`;
+        });
+        
+        // Row total
+        html += `<td style="font-weight:bold; background:#f1f1f1; border-left:2px solid #ddd;">${rowTotals[cls].toLocaleString()}</td>`;
+        html += `</tr>`;
+    });
+
+    html += '</tbody></table></div>';
+    
+    // Add legend bar
+    html += `<div style="margin-top:10px; font-size:0.8em; color:#666; display:flex; align-items:center; gap:10px;">
+        <span>Scale (${useLog ? 'Logarithmic' : 'Linear'}): 0</span>
+        <div style="width:150px; height:12px; background: linear-gradient(to right, rgb(240, 249, 33), rgb(235, 101, 105), rgb(13, 8, 135)); border-radius:2px;"></div>
+        <span>${maxValue.toLocaleString()}</span>
+    </div>`;
+
+    container.innerHTML = html;
+}
+
 
     /**
      * Helper function: Calculates the maximum age bin needed across multiple datasets.
@@ -1263,7 +1524,10 @@ function initZoningDeepDiveMap() {
         createConstructionEraChart(eraData, chartTypeFilter, showClosedOnly); // MODIFIED (filter-aware)
         createLifespanStripPlot(boxplotData, chartTypeFilter, showClosedOnly); // MODIFIED (filter-aware)
         updateRazeLifespanSummary(currentData); // NOT filtered
+        createStructureHeatmap(currentData, showClosedOnly);
         updateZoningDeepDive();
+        updateZoningDeepDive();
+        updateStructureHeatmapUI();
     }
 
     /**
