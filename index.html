@@ -375,7 +375,7 @@
                 <div class="stat-value" id="avgLifespan">0 <span class="stat-unit">years</span></div>
             </div>
 
-        <div class="stat-card">
+            <div class="stat-card">
                 <div class="stat-label">Avg Age of Current Buildings (Boston)</div>
                 <div class="stat-value" id="avgCurrentAge">0 <span class="stat-unit">years</span></div>
             </div>
@@ -406,6 +406,8 @@
             <span id="razePosClose" class="badge badge-close">— Close</span>
             <span id="razePosOpen"  class="badge badge-open">— Open</span>
         </div>
+        </div>
+        
 
         <div class="mini-stat" style="padding:8px 10px; border:1px solid #eee; border-radius:8px; min-width:200px;">
         <div style="font-size:12px; opacity:.75;">RAZE lifespan = 0</div>
@@ -426,58 +428,60 @@
         </div>
 
         <div class="mini-stat" style="padding:8px 10px; border:1px solid #eee; border-radius:8px; min-width:220px;">
-        <div style="font-size:12px; opacity:.75;">RAZE total (by lifespan)</div>
-        <div id="razeTotalCount" style="font-weight:700; font-size:16px;">—</div>
-        <div class="status-row">
-            <span id="razeTotalClose" class="badge badge-close">— Close</span>
-            <span id="razeTotalOpen"  class="badge badge-open">— Open</span>
+            <div style="font-size:12px; opacity:.75;">RAZE total (by lifespan)</div>
+            <div id="razeTotalCount" style="font-weight:700; font-size:16px;">—</div>
+            <div class="status-row">
+                <span id="razeTotalClose" class="badge badge-close">— Close</span>
+                <span id="razeTotalOpen"  class="badge badge-open">— Open</span>
+            </div>
         </div>
-        </div>
 
-        <div class="chart-container" id="structure-heatmap-container">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <h2 class="chart-title" style="margin-bottom: 0;">Structure Class vs. Lifespan Heatmap</h2>
-                
-                <div style="display: flex; gap: 15px; align-items: center; background: #f8f9fa; padding: 5px 15px; border-radius: 4px; border: 1px solid #ddd;">
-                    
-                    <div style="display: flex; align-items: center;">
-                        <label style="font-size: 0.9em; margin-right: 8px; font-weight: 500;">Bin Size:</label>
-                        <select id="structBinSize" onchange="updateStructureHeatmapUI()" style="padding: 4px; font-size: 0.9em;">
-                            <option value="5">5 Years</option>
-                            <option value="10">10 Years</option>
-                            <option value="20" selected>20 Years</option>
-                        </select>
-                    </div>
+    </div> 
+    <div class="chart-container" id="structure-heatmap-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h2 class="chart-title" style="margin-bottom: 0;">Structure Class vs. Lifespan Heatmap</h2>
+            
+            <div style="display: flex; gap: 15px; align-items: center; background: #f8f9fa; padding: 5px 15px; border-radius: 4px; border: 1px solid #ddd;">
+                <div style="display: flex; align-items: center;">
+                    <label style="font-size: 0.9em; margin-right: 8px; font-weight: 500;">Bin Size:</label>
+                    <select id="structBinSize" onchange="updateStructureHeatmapUI()" style="padding: 4px; font-size: 0.9em;">
+                        <option value="5">5 Years</option>
+                        <option value="10">10 Years</option>
+                        <option value="20" selected>20 Years</option>
+                    </select>
+                </div>
 
-                    <div style="border-left: 1px solid #ccc; height: 20px;"></div>
+                <div style="border-left: 1px solid #ccc; height: 20px;"></div>
 
-                    <div style="display: flex; align-items: center;">
-                        <input type="checkbox" id="structLogScale" onchange="updateStructureHeatmapUI()" style="margin-right: 5px;">
-                        <label for="structLogScale" style="font-size: 0.9em; cursor: pointer; user-select: none;">Log Scale</label>
-                    </div>
+                <div style="display: flex; align-items: center;">
+                    <input type="checkbox" id="structLogScale" onchange="updateStructureHeatmapUI()" style="margin-right: 5px;">
+                    <label for="structLogScale" style="font-size: 0.9em; cursor: pointer; user-select: none;">Log Scale</label>
                 </div>
             </div>
-
-            <div style="display: flex; align-items: center;">
-                <label style="font-size: 0.9em; margin-right: 8px; font-weight: 500;">Metric:</label>
-                <select id="structMetric" onchange="updateStructureHeatmapUI()" style="padding: 4px; font-size: 0.9em;">
-                    <option value="count" selected>Count</option>
-                    <option value="area">Gross Area (sq ft)</option>
-                </select>
-            </div>
-
-            <div style="border-left: 1px solid #ccc; height: 20px;"></div>
-
-            <p style="color: #666; font-size: 0.9em; margin-bottom: 15px;">
-                Distribution of building lifespans by Structure Class. Use <strong>Log Scale</strong> to better visualize smaller values alongside large outliers.
-            </p>
-            <div id="structureHeatmapContent"></div>
         </div>
 
+        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+            <label style="font-size: 0.9em; margin-right: 8px; font-weight: 500;">Metric:</label>
+            <select id="structMetric" onchange="updateStructureHeatmapUI()" style="padding: 4px; font-size: 0.9em;">
+                <option value="count" selected>Count</option>
+                <option value="area">Gross Area (sq ft)</option>
+                <option value="count_pct">Count (%)</option>
+                <option value="area_pct">Gross Area (%)</option>
+            </select>
         </div>
 
-                </div> <div class="controls">
-            <div class="control-group" style="display: flex; align-items: center; margin-bottom: 5px;">
+        <p style="color: #666; font-size: 0.9em; margin-bottom: 15px;">
+            Distribution of building lifespans by Structure Class. Use <strong>Log Scale</strong> to better visualize smaller values alongside large outliers.
+            <br><br>
+            <span style="font-size: 0.85em; background-color: #f8f9fa; padding: 4px 8px; border-radius: 4px; border: 1px solid #eee; display: inline-block;">
+                <strong>Data Note:</strong> 'STRUCTURE_CLASS' is derived from the Boston property assessment dataset. 
+                The fill rate for this column is <strong style="color: #d35400;">45.86%</strong> (Before cleaning, 310/676).
+            </span>
+        </p>
+        <div id="structureHeatmapContent"></div>
+    </div>
+    <div class="controls">
+        <div class="control-group" style="display: flex; align-items: center; margin-bottom: 5px;">
                 <input type="checkbox" id="statusFilter" onchange="updateCharts()" style="width: auto; height: auto; margin-right: 10px; cursor: pointer; transform: scale(1.1);">
                 <label for="statusFilter" style="margin-bottom: 0; font-weight: 500; cursor: pointer; user-select: none; font-size: 1em;">
                     Show only 'Closed' status permits
@@ -873,9 +877,13 @@ function getHeatmapColor(value, maxValue, useLog = false) {
     return { bg: bgString, text: textString };
 }
 
-function createStructureHeatmap(data, binSizeStr, useLog, metric = 'count') {
+function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count') {
     const container = document.getElementById('structureHeatmapContent');
     if (!container) return;
+
+
+    const isPct = metricRaw.endsWith('_pct');
+    const baseMetric = isPct ? metricRaw.replace('_pct', '') : metricRaw; 
 
     const binKey = `bin_${binSizeStr}`;
     const heatmapData = data.structure_class_heatmap ? data.structure_class_heatmap[binKey] : null;
@@ -896,30 +904,31 @@ function createStructureHeatmap(data, binSizeStr, useLog, metric = 'count') {
         return startA - startB;
     });
 
-    const sortTotals = {};
+    const rowTotals = {};
     Object.keys(heatmapData).forEach(cls => {
-        sortTotals[cls] = Object.values(heatmapData[cls]).reduce((acc, obj) => acc + (obj.count || 0), 0);
-    });
-
-    const displayTotals = {};
-    Object.keys(heatmapData).forEach(cls => {
-        displayTotals[cls] = Object.values(heatmapData[cls]).reduce((acc, obj) => {
-            const val = (metric === 'area') ? (obj.area || 0) : (obj.count || 0);
+        rowTotals[cls] = Object.values(heatmapData[cls]).reduce((acc, obj) => {
+            const val = (baseMetric === 'area') ? (obj.area || 0) : (obj.count || 0);
             return acc + val;
         }, 0);
     });
-    
+
     const sortedClasses = Object.keys(heatmapData).sort((a, b) => {
         if (a === 'Unknown') return 1;
         if (b === 'Unknown') return -1;
-        return sortTotals[b] - sortTotals[a];
+        return rowTotals[b] - rowTotals[a];
     });
 
     let maxValue = 0;
-    Object.values(heatmapData).forEach(row => {
-        Object.values(row).forEach(obj => {
-            const val = (metric === 'area') ? (obj.area || 0) : (obj.count || 0);
-            if (val > maxValue) maxValue = val;
+    
+    Object.keys(heatmapData).forEach(cls => {
+        const total = rowTotals[cls];
+        Object.values(heatmapData[cls]).forEach(obj => {
+            const val = (baseMetric === 'area') ? (obj.area || 0) : (obj.count || 0);
+            let checkVal = val;
+            if (isPct) {
+                checkVal = total > 0 ? (val / total * 100) : 0;
+            }
+            if (checkVal > maxValue) maxValue = checkVal;
         });
     });
 
@@ -934,37 +943,55 @@ function createStructureHeatmap(data, binSizeStr, useLog, metric = 'count') {
     sortedClasses.forEach(cls => {
         html += `<tr><td class="row-label">${cls}</td>`;
         
+        const rowTotal = rowTotals[cls];
+
         sortedBins.forEach(bin => {
             const cellObj = heatmapData[cls][bin] || {count: 0, area: 0};
-            const val = (metric === 'area') ? cellObj.area : cellObj.count;
+            const rawVal = (baseMetric === 'area') ? cellObj.area : cellObj.count;
             
-            const styles = getHeatmapColor(val, maxValue, useLog);
+            let displayValNum = rawVal;
+            if (isPct) {
+                displayValNum = rowTotal > 0 ? (rawVal / rowTotal * 100) : 0;
+            }
+
+            const styles = getHeatmapColor(displayValNum, maxValue, useLog);
             
-            let displayVal = '';
-            if (val > 0) {
-                if (metric === 'area') {
-                    if (val > 1000000) displayVal = (val / 1000000).toFixed(1) + 'M';
-                    else if (val > 1000) displayVal = (val / 1000).toFixed(0) + 'k';
-                    else displayVal = val.toLocaleString();
+            let displayString = '';
+            if (rawVal > 0) {
+                if (isPct) {
+                    displayString = displayValNum.toFixed(1) + '%';
                 } else {
-                    displayVal = val.toLocaleString();
+                    if (baseMetric === 'area') {
+                        if (rawVal > 1000000) displayString = (rawVal / 1000000).toFixed(1) + 'M';
+                        else if (rawVal > 1000) displayString = (rawVal / 1000).toFixed(0) + 'k';
+                        else displayString = rawVal.toLocaleString();
+                    } else {
+                        displayString = rawVal.toLocaleString();
+                    }
                 }
             }
             
-            const tooltip = `${cls} (${bin})\nCount: ${cellObj.count.toLocaleString()}\nArea: ${(cellObj.area || 0).toLocaleString()} sq ft`;
+            const pctVal = rowTotal > 0 ? (rawVal / rowTotal * 100).toFixed(1) : '0.0';
+            const tooltip = `${cls} (${bin})\n` +
+                            `Count: ${cellObj.count.toLocaleString()} (${baseMetric==='count'? pctVal+'%' : '...% of total count'})\n` +
+                            `Area: ${(cellObj.area || 0).toLocaleString()} sq ft (${baseMetric==='area'? pctVal+'%' : '...% of total area'})`;
             
-            html += `<td style="background-color: ${styles.bg}; color: ${styles.text}; font-weight: ${val > 0 ? '600' : 'normal'}; cursor: help;" 
+            html += `<td style="background-color: ${styles.bg}; color: ${styles.text}; font-weight: ${rawVal > 0 ? '600' : 'normal'}; cursor: help;" 
                          title="${tooltip}">`;
-            html += `<div class="heatmap-cell">${displayVal}</div>`;
+            html += `<div class="heatmap-cell">${displayString}</div>`;
             html += `</td>`;
         });
         
-        const totalVal = displayTotals[cls];
-        let displayTotal = totalVal.toLocaleString();
-        
-        if (metric === 'area') {
-             if (totalVal > 1000000) displayTotal = (totalVal / 1000000).toFixed(1) + 'M';
-             else if (totalVal > 1000) displayTotal = (totalVal / 1000).toFixed(0) + 'k';
+        let displayTotal = '';
+        if (isPct) {
+             displayTotal = '100%'; 
+        } else {
+            const totalVal = rowTotals[cls];
+            displayTotal = totalVal.toLocaleString();
+            if (baseMetric === 'area') {
+                 if (totalVal > 1000000) displayTotal = (totalVal / 1000000).toFixed(1) + 'M';
+                 else if (totalVal > 1000) displayTotal = (totalVal / 1000).toFixed(0) + 'k';
+            }
         }
 
         html += `<td style="font-weight:bold; background:#f1f1f1; border-left:2px solid #ddd;">${displayTotal}</td>`;
@@ -973,10 +1000,17 @@ function createStructureHeatmap(data, binSizeStr, useLog, metric = 'count') {
 
     html += '</tbody></table></div>';
     
+    let maxLabel = '';
+    if (isPct) {
+        maxLabel = maxValue.toFixed(1) + '%';
+    } else {
+        maxLabel = baseMetric === 'area' ? (maxValue/1000000).toFixed(1) + 'M sq ft' : maxValue.toLocaleString();
+    }
+
     html += `<div style="margin-top:10px; font-size:0.8em; color:#666; display:flex; align-items:center; gap:10px;">
         <span>Scale (${useLog ? 'Logarithmic' : 'Linear'}): 0</span>
         <div style="width:150px; height:12px; background: linear-gradient(to right, rgb(240, 249, 33), rgb(235, 101, 105), rgb(13, 8, 135)); border-radius:2px;"></div>
-        <span>${metric === 'area' ? (maxValue/1000000).toFixed(1) + 'M sq ft' : maxValue.toLocaleString()}</span>
+        <span>${maxLabel}</span>
     </div>`;
 
     container.innerHTML = html;

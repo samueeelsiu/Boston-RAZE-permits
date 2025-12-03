@@ -365,8 +365,10 @@ def process_demolition_data(assessment_file, permit_file):
 
     structure_heatmap_data = {}
 
-    # We use lifespan_df (filtered for lifespan > 0)
-    unique_classes = lifespan_df['structure_class'].unique()
+    heatmap_df = lifespan_df[lifespan_df['worktype'] == 'RAZE'].copy()
+
+    unique_classes = heatmap_df['structure_class'].unique()
+
     max_bin_age = 200
 
     # Define the bin sizes we want to support
@@ -379,7 +381,8 @@ def process_demolition_data(assessment_file, permit_file):
         for struct_cls in unique_classes:
             if pd.isna(struct_cls) or struct_cls == 'Unknown': continue
 
-            cls_df = lifespan_df[lifespan_df['structure_class'] == struct_cls]
+
+            cls_df = heatmap_df[heatmap_df['structure_class'] == struct_cls]
             bins_data = {}
 
             for i in range(0, max_bin_age, bin_width):
