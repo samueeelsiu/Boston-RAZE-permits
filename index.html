@@ -925,6 +925,7 @@ function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count', c
         Object.keys(row).forEach(bin => allBins.add(bin));
     });
     
+    // Sort time bins numerically (e.g., 0-10 before 10-20)
     const sortedBins = Array.from(allBins).sort((a, b) => {
         const startA = parseInt(a.split('-')[0]);
         const startB = parseInt(b.split('-')[0]);
@@ -932,6 +933,8 @@ function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count', c
     });
 
     // --- 4. Prepare Rows & Sorting Logic ---
+    
+    // Calculate totals for sorting fallback (Structure Class) or specific logic
     const sortTotals = {};
     Object.keys(heatmapData).forEach(cls => {
         sortTotals[cls] = Object.values(heatmapData[cls]).reduce((acc, obj) => {
@@ -939,6 +942,7 @@ function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count', c
         }, 0);
     });
 
+    // Calculate totals for display (supports Area vs Count)
     const displayTotals = {};
     Object.keys(heatmapData).forEach(cls => {
         displayTotals[cls] = Object.values(heatmapData[cls]).reduce((acc, obj) => {
@@ -949,17 +953,44 @@ function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count', c
 
     const grandTotal = Object.values(displayTotals).reduce((a, b) => a + b, 0);
 
-    // Sort Rows
+    // --- DEFINE CUSTOM ORDER HERE ---
+    const fixedOrder = [
+        'Wood/Frame', 
+        'Brick/Concrete', 
+        'Reinforced Concrete', 
+        'Struct Steel', 
+        'Metal'
+    ];
+
+    // Sort Rows based on Category Type
     const sortedClasses = Object.keys(heatmapData).sort((a, b) => {
+        // Rule 1: 'Unknown' always goes to the very bottom
         if (a === 'Unknown') return 1;
         if (b === 'Unknown') return -1;
 
-        // Land Use: Alphabetical Sort
+        // Rule 2: If viewing Land Use, sort Alphabetically
         if (categoryKey === 'land_use_heatmap') {
             return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
         }
 
-        // Structure Class: Count Descending Sort
+        // Rule 3: If viewing Structure Class, use Fixed Manual Order
+        // Get index of class in the fixed list (returns -1 if not found)
+        const idxA = fixedOrder.indexOf(a);
+        const idxB = fixedOrder.indexOf(b);
+
+        // If both items are in the fixed list, sort by their index
+        if (idxA !== -1 && idxB !== -1) {
+            return idxA - idxB;
+        }
+
+        // If 'a' is in the list but 'b' is not, 'a' comes first
+        if (idxA !== -1) return -1;
+        
+        // If 'b' is in the list but 'a' is not, 'b' comes first
+        if (idxB !== -1) return 1;
+
+        // Rule 4: Fallback for Structure Classes NOT in the fixed list
+        // Sort by Count Descending
         return sortTotals[b] - sortTotals[a]; 
     });
 
@@ -1059,7 +1090,7 @@ function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count', c
         <span>${maxLabel}</span>
     </div>`;
 
-    // --- NEW: Add Land Use Legend if applicable ---
+    // --- 7. Add Land Use Legend if applicable ---
     if (categoryKey === 'land_use_heatmap') {
         const luCodes = {
             "A": "Residential 7 or more units",
@@ -1088,10 +1119,7 @@ function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count', c
         `;
 
         Object.keys(luCodes).sort().forEach(code => {
-            // Only show codes that actually appear in the chart to save space (Optional, currently showing all)
-            // if (sortedClasses.includes(code)) { 
-                legendHtml += `<div><span style="font-weight:700; color:#333; width:30px; display:inline-block;">${code}</span> ${luCodes[code]}</div>`;
-            // }
+             legendHtml += `<div><span style="font-weight:700; color:#333; width:30px; display:inline-block;">${code}</span> ${luCodes[code]}</div>`;
         });
 
         legendHtml += `</div></div>`;
