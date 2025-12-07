@@ -71,12 +71,12 @@ def process_demolition_data(assessment_file, permit_file):
     # --- 2. Prepare property assessment data ---
     print("Processing property assessment data...")
     # Load more columns to identify buildings correctly
-    assessment_cols = ['PID', 'CM_ID', 'YR_BUILT', 'Zoning_District', 'Zoning_Subdistrict', 'STRUCTURE_CLASS', 'GROSS_AREA']
+    assessment_cols = ['PID', 'CM_ID', 'YR_BUILT', 'Zoning_District', 'Zoning_Subdistrict', 'STRUCTURE_CLASS', 'GROSS_AREA', 'LU']
 
     if 'CM_ID' not in prop_ass_df.columns:
         print("Warning: 'CM_ID' not found in assessment data. Condominium logic will be skipped.")
         # Still include zoning columns
-        assessment_cols = ['PID', 'YR_BUILT', 'Zoning_District', 'Zoning_Subdistrict', 'STRUCTURE_CLASS', 'GROSS_AREA']
+        assessment_cols = ['PID', 'YR_BUILT', 'Zoning_District', 'Zoning_Subdistrict', 'STRUCTURE_CLASS', 'GROSS_AREA', 'LU']
 
     assessment_data = prop_ass_df[assessment_cols].copy()
     assessment_data.dropna(subset=['YR_BUILT'], inplace=True)
@@ -125,6 +125,7 @@ def process_demolition_data(assessment_file, permit_file):
         Zoning_District=('Zoning_District', 'first'),
         Zoning_Subdistrict=('Zoning_Subdistrict', 'first'),
         structure_class=('structure_class_desc', 'first'),
+        land_use=('LU', 'first'),
         gross_area=('GROSS_AREA', 'sum')
     ).reset_index()
 
@@ -404,7 +405,38 @@ def process_demolition_data(assessment_file, permit_file):
                 structure_heatmap_data[bin_key][str(struct_cls)] = bins_data
 
     all_data['structure_class_heatmap'] = structure_heatmap_data
-    all_data['multi_raze_parcels'] = multi_raze_records  # This chart is not filtered by status
+
+    # --- START NEW CODE: Land Use Heatmap ---
+    print("Generating Land Use Heatmap data...")
+    land_use_heatmap_data = {}
+
+    # 我们复用之前的 heatmap_df
+    unique_lu = heatmap_df['land_use'].unique()
+
+    for bin_width in target_bin_sizes:
+        bin_key = f'bin_{bin_width}'
+        land_use_heatmap_data[bin_key] = {}
+
+        for lu_code in unique_lu:
+            if pd.isna(lu_code) or str(lu_code).strip() == '': continue
+
+            cls_df = heatmap_df[heatmap_df['land_use'] == lu_code]
+            bins_data = {}
+
+            for i in range(0, max_bin_age, bin_width):
+                label = f"{i}-{i + bin_width}"
+                subset = cls_df[(cls_df['lifespan'] >= i) & (cls_df['lifespan'] < i + bin_width)]
+                count = len(subset)
+
+                if count > 0:
+                    area = int(subset['gross_area'].fillna(0).sum())
+                    bins_data[label] = {'count': count, 'area': area}
+
+            if bins_data:
+                land_use_heatmap_data[bin_key][str(lu_code)] = bins_data
+
+    all_data['land_use_heatmap'] = land_use_heatmap_data
+    all_data['multi_raze_parcels'] = multi_raze_records 
 
     # --- Define year span from ALL data (positive and replaced) ---
     pos_year_min = lifespan_df['demolition_year'].min() if not lifespan_df.empty else np.inf

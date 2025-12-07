@@ -451,6 +451,13 @@
                     </select>
                 </div>
 
+                <div style="display: flex; align-items: center; margin-right: 15px;"> <label style="font-size: 0.9em; margin-right: 8px; font-weight: 500;">Category:</label>
+                    <select id="heatmapCategory" onchange="updateStructureHeatmapUI()" style="padding: 4px; font-size: 0.9em;">
+                        <option value="structure_class_heatmap" selected>Structure Class</option>
+                        <option value="land_use_heatmap">Land Use Code (LU)</option>
+                    </select>
+                </div>
+
                 <div style="border-left: 1px solid #ccc; height: 20px;"></div>
 
                 <div style="display: flex; align-items: center;">
@@ -832,9 +839,11 @@ function updateStructureHeatmapUI() {
     if (!currentData) return;
     const binSize = document.getElementById('structBinSize').value;
     const useLog = document.getElementById('structLogScale').checked;
-    const metric = document.getElementById('structMetric').value; // <--- 获取 Metric
+    const metric = document.getElementById('structMetric').value;
     
-    createStructureHeatmap(currentData, binSize, useLog, metric); // <--- 传递 Metric
+    const categoryKey = document.getElementById('heatmapCategory').value; 
+    
+    createStructureHeatmap(currentData, binSize, useLog, metric, categoryKey); 
 }
 
 // --- Modified: Enhanced color function (supports Log mode) ---
@@ -877,22 +886,40 @@ function getHeatmapColor(value, maxValue, useLog = false) {
     return { bg: bgString, text: textString };
 }
 
-function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count') {
+/**
+ * Generates the Heatmap HTML structure.
+ * * @param {Object} data - The full JSON data object.
+ * @param {String} binSizeStr - The selected bin size (e.g., "5", "10", "20").
+ * @param {Boolean} useLog - Whether to use logarithmic color scaling.
+ * @param {String} metricRaw - The selected metric ('count', 'area', 'count_pct', 'area_pct').
+ * @param {String} categoryKey - The key for data source ('structure_class_heatmap' or 'land_use_heatmap').
+ */
+function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count', categoryKey = 'structure_class_heatmap') {
     const container = document.getElementById('structureHeatmapContent');
     if (!container) return;
 
+    // --- 1. Update Chart Title Dynamically ---
+    const titleEl = document.querySelector('#structure-heatmap-container .chart-title');
+    if (titleEl) {
+        titleEl.textContent = (categoryKey === 'land_use_heatmap') 
+            ? 'Land Use (LU) vs. Lifespan Heatmap' 
+            : 'Structure Class vs. Lifespan Heatmap';
+    }
 
+    // --- 2. Parse Metric Configuration ---
     const isPct = metricRaw.endsWith('_pct');
     const baseMetric = isPct ? metricRaw.replace('_pct', '') : metricRaw; 
 
+    // Access data subset
     const binKey = `bin_${binSizeStr}`;
-    const heatmapData = data.structure_class_heatmap ? data.structure_class_heatmap[binKey] : null;
+    const heatmapData = data[categoryKey] ? data[categoryKey][binKey] : null;
 
     if (!heatmapData || Object.keys(heatmapData).length === 0) {
-        container.innerHTML = '<p class="error-message">No data available for this bin size.</p>';
+        container.innerHTML = '<p class="error-message">No data available for this category/bin size.</p>';
         return;
     }
 
+    // --- 3. Prepare Columns (Time Bins) ---
     const allBins = new Set();
     Object.values(heatmapData).forEach(row => {
         Object.keys(row).forEach(bin => allBins.add(bin));
@@ -904,48 +931,65 @@ function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count') {
         return startA - startB;
     });
 
-    const rowTotals = {};
+    // --- 4. Prepare Rows & Sorting Logic ---
+    const sortTotals = {};
     Object.keys(heatmapData).forEach(cls => {
-        rowTotals[cls] = Object.values(heatmapData[cls]).reduce((acc, obj) => {
+        sortTotals[cls] = Object.values(heatmapData[cls]).reduce((acc, obj) => {
+            return acc + (obj.count || 0); 
+        }, 0);
+    });
+
+    const displayTotals = {};
+    Object.keys(heatmapData).forEach(cls => {
+        displayTotals[cls] = Object.values(heatmapData[cls]).reduce((acc, obj) => {
             const val = (baseMetric === 'area') ? (obj.area || 0) : (obj.count || 0);
             return acc + val;
         }, 0);
     });
-    const grandTotal = Object.values(rowTotals).reduce((a, b) => a + b, 0);
 
+    const grandTotal = Object.values(displayTotals).reduce((a, b) => a + b, 0);
+
+    // Sort Rows
     const sortedClasses = Object.keys(heatmapData).sort((a, b) => {
         if (a === 'Unknown') return 1;
         if (b === 'Unknown') return -1;
-        return rowTotals[b] - rowTotals[a];
+
+        // Land Use: Alphabetical Sort
+        if (categoryKey === 'land_use_heatmap') {
+            return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+        }
+
+        // Structure Class: Count Descending Sort
+        return sortTotals[b] - sortTotals[a]; 
     });
 
+    // --- 5. Determine Max Value for Color Scale ---
     let maxValue = 0;
-    
     Object.keys(heatmapData).forEach(cls => {
-        const total = rowTotals[cls];
         Object.values(heatmapData[cls]).forEach(obj => {
-            const val = (baseMetric === 'area') ? (obj.area || 0) : (obj.count || 0);
-            let checkVal = val;
-            if (isPct) {
-                checkVal = total > 0 ? (val / grandTotal * 100) : 0;
-            }
-            if (checkVal > maxValue) maxValue = checkVal;
+             const val = (baseMetric === 'area') ? (obj.area || 0) : (obj.count || 0);
+             let checkVal = val;
+             if (isPct) {
+                checkVal = grandTotal > 0 ? (val / grandTotal * 100) : 0;
+             }
+             if (checkVal > maxValue) maxValue = checkVal;
         });
     });
 
+    // --- 6. Build HTML Table ---
     let html = '<div class="heatmap-container"><table class="heatmap-table">';
     
-    html += '<thead><tr><th class="row-header" style="background:#fff; border-bottom:2px solid #333;">Structure Class</th>';
+    // Header
+    html += '<thead><tr><th class="row-header" style="background:#fff; border-bottom:2px solid #333;">Category</th>';
     sortedBins.forEach(bin => {
         html += `<th>${bin}</th>`;
     });
     html += '<th style="background:#333;">Total</th></tr></thead><tbody>';
 
+    // Body
     sortedClasses.forEach(cls => {
-        html += `<tr><td class="row-label">${cls}</td>`;
+        html += `<tr><td class="row-label" title="${cls}">${cls}</td>`;
         
-        const rowTotal = rowTotals[cls];
-
         sortedBins.forEach(bin => {
             const cellObj = heatmapData[cls][bin] || {count: 0, area: 0};
             const rawVal = (baseMetric === 'area') ? cellObj.area : cellObj.count;
@@ -972,36 +1016,36 @@ function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count') {
                 }
             }
             
-            const pctVal = grandTotal > 0 ? (rawVal / grandTotal * 100).toFixed(1) : '0.0';
+            const pctVal = grandTotal > 0 ? (rawVal / grandTotal * 100).toFixed(2) : '0.00';
             const tooltip = `${cls} (${bin})\n` +
-                            `Count: ${cellObj.count.toLocaleString()} (${baseMetric==='count'? pctVal+'%' : '...% of total count'})\n` +
-                            `Area: ${(cellObj.area || 0).toLocaleString()} sq ft (${baseMetric==='area'? pctVal+'%' : '...% of total area'})`;
+                            `Count: ${cellObj.count.toLocaleString()} \n` +
+                            `Area: ${(cellObj.area || 0).toLocaleString()} sq ft\n` +
+                            `(% of Total: ${pctVal}%)`;
             
-            html += `<td style="background-color: ${styles.bg}; color: ${styles.text}; font-weight: ${rawVal > 0 ? '600' : 'normal'}; cursor: default;" 
-             title="${tooltip}">`;
+            html += `<td style="background-color: ${styles.bg}; color: ${styles.text}; font-weight: ${rawVal > 0 ? '600' : 'normal'}; cursor: default;" title="${tooltip}">`;
             html += `<div class="heatmap-cell">${displayString}</div>`;
             html += `</td>`;
         });
         
-        let displayTotal = '';
+        // Row Total
+        let displayTotalStr = '';
+        const rowVal = displayTotals[cls];
         if (isPct) {
-             const rowPct = grandTotal > 0 ? (rowTotals[cls] / grandTotal * 100).toFixed(1) : '0.0';
-             displayTotal = rowPct + '%';
+             const rowPct = grandTotal > 0 ? (rowVal / grandTotal * 100).toFixed(1) : '0.0';
+             displayTotalStr = rowPct + '%';
         } else {
-            const totalVal = rowTotals[cls];
-            displayTotal = totalVal.toLocaleString();
+            displayTotalStr = rowVal.toLocaleString();
             if (baseMetric === 'area') {
-                 if (totalVal > 1000000) displayTotal = (totalVal / 1000000).toFixed(1) + 'M';
-                 else if (totalVal > 1000) displayTotal = (totalVal / 1000).toFixed(0) + 'k';
+                 if (rowVal > 1000000) displayTotalStr = (rowVal / 1000000).toFixed(1) + 'M';
+                 else if (rowVal > 1000) displayTotalStr = (rowVal / 1000).toFixed(0) + 'k';
             }
         }
-
-        html += `<td style="font-weight:bold; background:#f1f1f1; border-left:2px solid #ddd;">${displayTotal}</td>`;
+        html += `<td style="font-weight:bold; background:#f1f1f1; border-left:2px solid #ddd;">${displayTotalStr}</td>`;
         html += `</tr>`;
     });
-
     html += '</tbody></table></div>';
     
+    // Scale Indicator
     let maxLabel = '';
     if (isPct) {
         maxLabel = maxValue.toFixed(1) + '%';
@@ -1014,6 +1058,45 @@ function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count') {
         <div style="width:150px; height:12px; background: linear-gradient(to right, rgb(240, 249, 33), rgb(235, 101, 105), rgb(13, 8, 135)); border-radius:2px;"></div>
         <span>${maxLabel}</span>
     </div>`;
+
+    // --- NEW: Add Land Use Legend if applicable ---
+    if (categoryKey === 'land_use_heatmap') {
+        const luCodes = {
+            "A": "Residential 7 or more units",
+            "E": "Tax-exempt",
+            "AH": "Agricultural/Horticultural",
+            "EA": "Tax-exempt (121A)",
+            "C": "Commercial",
+            "I": "Industrial",
+            "CC": "Commercial condominium",
+            "R1": "Residential 1-family",
+            "CD": "Residential condominium unit",
+            "R2": "Residential 2-family",
+            "CL": "Commercial land",
+            "R3": "Residential 3-family",
+            "CM": "Condominium main structure",
+            "R4": "Residential 4 or more family",
+            "RC": "Mixed use (res. and comm.)",
+            "CP": "Condo parking",
+            "RL": "Residential land"
+        };
+
+        let legendHtml = `
+        <div style="margin-top: 20px; padding: 15px; background: #fff; border: 1px solid #eee; border-radius: 6px;">
+            <h4 style="margin-bottom: 10px; font-size: 0.9em; color: #2c3e50;">Land Use Code Key:</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; font-size: 0.8em; color: #555;">
+        `;
+
+        Object.keys(luCodes).sort().forEach(code => {
+            // Only show codes that actually appear in the chart to save space (Optional, currently showing all)
+            // if (sortedClasses.includes(code)) { 
+                legendHtml += `<div><span style="font-weight:700; color:#333; width:30px; display:inline-block;">${code}</span> ${luCodes[code]}</div>`;
+            // }
+        });
+
+        legendHtml += `</div></div>`;
+        html += legendHtml;
+    }
 
     container.innerHTML = html;
 }
