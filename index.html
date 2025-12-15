@@ -468,6 +468,10 @@
                 <option value="count_pct">Count (%)</option>
                 <option value="area_pct">Gross Area (%)</option>
             </select>
+            <label style="margin-left: 20px; font-size: 0.9em; color: #555;">
+                <input type="checkbox" id="luCollapseCategory" onchange="updateStructureHeatmapUI()" style="margin-right: 5px;">
+                Collapse by Category
+            </label>
         </div>
 
         <p style="color: #666; font-size: 0.9em; margin-bottom: 15px;">
@@ -539,30 +543,30 @@
                 </select>
             </div>
 
-            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 30px;">
+            <div style="display: flex; gap: 20px; margin-bottom: 30px; height: 400px;">
                 
-                <div id="zoningMap" style="height: 450px; width: 100%; border-radius: 4px; border: 1px solid #ddd;"></div>
+                <div id="zoningMap" style="flex: 3; border-radius: 4px; border: 1px solid #ddd;"></div>
 
-                <div class="stats-grid" style="grid-template-columns: 1fr; gap: 20px; margin: 0;">
-                    <div class="stat-card">
+                <div style="display: flex; flex-direction: column; gap: 15px; flex: 1; min-width: 180px;">
+                    <div class="stat-card" style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                         <div class="stat-label">Avg. Current Age (in District)</div>
                         <div class="stat-value" id="zoningAvgCurrentAge">0 <span class="stat-unit">years</span></div>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card" style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                         <div class="stat-label">Avg. RAZE Lifespan (in District)</div>
                         <div class="stat-value" id="zoningAvgLifespan">0 <span class="stat-unit">years</span></div>
                     </div>
                 </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                <div id="zoning-demolished-chart-container">
+            <div style="display: flex; gap: 30px;">
+                <div style="flex: 1; min-width: 0;">
                     <h3 class="chart-title" style="font-size: 1.1em;">Age Distribution of Demolished Buildings (RAZE)</h3>
-                    <canvas id="zoningDemolishedAgeChart" style="max-height: 300px;"></canvas>
+                    <canvas id="zoningDemolishedAgeChart" style="width: 100%; max-height: 300px;"></canvas>
                 </div>
-                <div id="zoning-current-chart-container">
+                <div style="flex: 1; min-width: 0;">
                     <h3 class="chart-title" style="font-size: 1.1em;">Age Distribution of Current Buildings</h3>
-                    <canvas id="zoningCurrentAgeChart" style="max-height: 300px;"></canvas>
+                    <canvas id="zoningCurrentAgeChart" style="width: 100%; max-height: 300px;"></canvas>
                 </div>
             </div>
         </div>
@@ -830,6 +834,7 @@ function updateStructureHeatmapUI() {
     const binSize = document.getElementById('structBinSize').value;
     const useLog = document.getElementById('structLogScale').checked;
     const metric = document.getElementById('structMetric').value;
+    const collapseCategory = document.getElementById('luCollapseCategory')?.checked || false;
     
 
     createStructureHeatmap(
@@ -843,14 +848,15 @@ function updateStructureHeatmapUI() {
     ); 
 
     createStructureHeatmap(
-        currentData, 
-        binSize, 
-        useLog, 
-        metric, 
+        currentData,
+        binSize,
+        useLog,
+        metric,
         'land_use_heatmap', 
         'landUseHeatmapContainer', 
-        '2. Land Use (LU) vs. Lifespan'
-    ); 
+        '2. Land Use (LU) vs. Lifespan',
+        collapseCategory  // NEW: pass collapse flag
+    );
 }
 
 // --- Modified: Enhanced color function (supports Log mode) ---
@@ -895,13 +901,16 @@ function getHeatmapColor(value, maxValue, useLog = false) {
 
 /**
  * Generates the Heatmap HTML structure.
- * * @param {Object} data - The full JSON data object.
+ * @param {Object} data - The full JSON data object.
  * @param {String} binSizeStr - The selected bin size (e.g., "5", "10", "20").
  * @param {Boolean} useLog - Whether to use logarithmic color scaling.
  * @param {String} metricRaw - The selected metric ('count', 'area', 'count_pct', 'area_pct').
  * @param {String} categoryKey - The key for data source ('structure_class_heatmap' or 'land_use_heatmap').
+ * @param {String} containerId - The ID of the container element.
+ * @param {String} titleText - The title text for the heatmap.
+ * @param {Boolean} collapseCategory - Whether to collapse by category (land use only).
  */
-function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count', categoryKey, containerId, titleText) {
+function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count', categoryKey, containerId, titleText, collapseCategory = false) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
@@ -917,37 +926,6 @@ function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count', c
         container.innerHTML = `<h3 style="font-size:1.1em; margin-bottom:10px; color:#2c3e50;">${titleText}</h3><p class="error-message">No data available for this category/bin size.</p>`;
         return;
     }
-
-    // --- Prepare Columns (Time Bins) ---
-    const allBins = new Set();
-    Object.values(heatmapData).forEach(row => {
-        Object.keys(row).forEach(bin => allBins.add(bin));
-    });
-    
-    // Sort time bins
-    const sortedBins = Array.from(allBins).sort((a, b) => {
-        const startA = parseInt(a.split('-')[0]);
-        const startB = parseInt(b.split('-')[0]);
-        return startA - startB;
-    });
-
-    // --- Prepare Rows & Sorting Logic ---
-    const sortTotals = {};
-    Object.keys(heatmapData).forEach(cls => {
-        sortTotals[cls] = Object.values(heatmapData[cls]).reduce((acc, obj) => {
-            return acc + (obj.count || 0); 
-        }, 0);
-    });
-
-    const displayTotals = {};
-    Object.keys(heatmapData).forEach(cls => {
-        displayTotals[cls] = Object.values(heatmapData[cls]).reduce((acc, obj) => {
-            const val = (baseMetric === 'area') ? (obj.area || 0) : (obj.count || 0);
-            return acc + val;
-        }, 0);
-    });
-
-    const grandTotal = Object.values(displayTotals).reduce((a, b) => a + b, 0);
 
     // Fixed order for Structure Class heatmap
     const fixedOrder = [
@@ -996,34 +974,109 @@ function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count', c
         'I':  { category: 'Industrial', desc: 'Industrial', permit: '' }
     };
 
-    // Sort Rows
-    const sortedClasses = Object.keys(heatmapData).sort((a, b) => {
-        if (a === 'Unknown') return 1;
-        if (b === 'Unknown') return -1;
-        if (categoryKey === 'land_use_heatmap') {
-            // Use fixed order defined in landUseOrder array
-            const idxA = landUseOrder.indexOf(a);
-            const idxB = landUseOrder.indexOf(b);
-            // If both are in the fixed order, sort by that order
+    // --- Collapse data by category if requested ---
+    let displayData = heatmapData;  // Default: use original data
+    
+    if (categoryKey === 'land_use_heatmap' && collapseCategory) {
+        // Aggregate data by category
+        const collapsedData = {};
+        const categoryOrderForCollapse = ['Residential', 'Commercial', 'Mixed Use', 'Agricultural', 'Unclassified', 'Industrial'];
+        
+        // Initialize categories
+        categoryOrderForCollapse.forEach(cat => {
+            collapsedData[cat] = {};
+        });
+        
+        // Sum up data from each LU code into its category
+        Object.keys(heatmapData).forEach(luCode => {
+            const mapping = landUseMapping[luCode];
+            const category = mapping ? mapping.category : 'Unclassified';
+            
+            Object.keys(heatmapData[luCode]).forEach(bin => {
+                if (!collapsedData[category][bin]) {
+                    collapsedData[category][bin] = { count: 0, area: 0 };
+                }
+                collapsedData[category][bin].count += (heatmapData[luCode][bin].count || 0);
+                collapsedData[category][bin].area += (heatmapData[luCode][bin].area || 0);
+            });
+        });
+        
+        // Remove empty categories
+        categoryOrderForCollapse.forEach(cat => {
+            if (Object.keys(collapsedData[cat]).length === 0) {
+                delete collapsedData[cat];
+            }
+        });
+        
+        displayData = collapsedData;
+    }
+
+    // --- Prepare Columns (Time Bins) ---
+    const allBins = new Set();
+    Object.values(displayData).forEach(row => {
+        Object.keys(row).forEach(bin => allBins.add(bin));
+    });
+    
+    // Sort time bins
+    const sortedBins = Array.from(allBins).sort((a, b) => {
+        const startA = parseInt(a.split('-')[0]);
+        const startB = parseInt(b.split('-')[0]);
+        return startA - startB;
+    });
+
+    // --- Prepare Rows & Sorting Logic ---
+    const sortTotals = {};
+    Object.keys(displayData).forEach(cls => {
+        sortTotals[cls] = Object.values(displayData[cls]).reduce((acc, obj) => {
+            return acc + (obj.count || 0); 
+        }, 0);
+    });
+
+    const displayTotals = {};
+    Object.keys(displayData).forEach(cls => {
+        displayTotals[cls] = Object.values(displayData[cls]).reduce((acc, obj) => {
+            const val = (baseMetric === 'area') ? (obj.area || 0) : (obj.count || 0);
+            return acc + val;
+        }, 0);
+    });
+
+    const grandTotal = Object.values(displayTotals).reduce((a, b) => a + b, 0);
+
+    // --- Sort Rows ---
+    let sortedClasses;
+    if (categoryKey === 'land_use_heatmap' && collapseCategory) {
+        // When collapsed, use fixed category order
+        const categoryOrderForSort = ['Residential', 'Commercial', 'Mixed Use', 'Agricultural', 'Unclassified', 'Industrial'];
+        sortedClasses = categoryOrderForSort.filter(cat => displayData[cat]);
+    } else {
+        sortedClasses = Object.keys(displayData).sort((a, b) => {
+            if (a === 'Unknown') return 1;
+            if (b === 'Unknown') return -1;
+            if (categoryKey === 'land_use_heatmap') {
+                // Use fixed order defined in landUseOrder array
+                const idxA = landUseOrder.indexOf(a);
+                const idxB = landUseOrder.indexOf(b);
+                // If both are in the fixed order, sort by that order
+                if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+                // If only one is in the order, prioritize it
+                if (idxA !== -1) return -1;
+                if (idxB !== -1) return 1;
+                // Fallback: alphabetical for any codes not in the list
+                return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+            }
+            const idxA = fixedOrder.indexOf(a);
+            const idxB = fixedOrder.indexOf(b);
             if (idxA !== -1 && idxB !== -1) return idxA - idxB;
-            // If only one is in the order, prioritize it
             if (idxA !== -1) return -1;
             if (idxB !== -1) return 1;
-            // Fallback: alphabetical for any codes not in the list
-            return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
-        }
-        const idxA = fixedOrder.indexOf(a);
-        const idxB = fixedOrder.indexOf(b);
-        if (idxA !== -1 && idxB !== -1) return idxA - idxB;
-        if (idxA !== -1) return -1;
-        if (idxB !== -1) return 1;
-        return sortTotals[b] - sortTotals[a]; 
-    });
+            return sortTotals[b] - sortTotals[a]; 
+        });
+    }
 
     // --- Determine Max Value for Color Scale ---
     let maxValue = 0;
-    Object.keys(heatmapData).forEach(cls => {
-        Object.values(heatmapData[cls]).forEach(obj => {
+    Object.keys(displayData).forEach(cls => {
+        Object.values(displayData[cls]).forEach(obj => {
              const val = (baseMetric === 'area') ? (obj.area || 0) : (obj.count || 0);
              let checkVal = val;
              if (isPct) {
@@ -1041,9 +1094,15 @@ function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count', c
     // Table Header - different structure for land use heatmap
     if (categoryKey === 'land_use_heatmap') {
         html += '<thead><tr>';
-        html += '<th class="row-header" style="background:#2c3e50; color:white; min-width:100px;">Category</th>';
-        html += '<th class="row-header" style="background:#2c3e50; color:white; min-width:200px; left:100px;">Assessor LU Code</th>';
-        html += '<th class="row-header" style="background:#2c3e50; color:white; min-width:150px; left:300px;">Permit Occupancy</th>';
+        if (collapseCategory) {
+            // Collapsed view: only show Category column
+            html += '<th class="row-header" style="background:#2c3e50; color:white; min-width:120px;">Category</th>';
+        } else {
+            // Detailed view: show all 3 columns
+            html += '<th class="row-header" style="background:#2c3e50; color:white; min-width:100px;">Category</th>';
+            html += '<th class="row-header" style="background:#2c3e50; color:white; min-width:200px; left:100px;">Assessor LU Code</th>';
+            html += '<th class="row-header" style="background:#2c3e50; color:white; min-width:150px; left:300px;">Permit Occupancy</th>';
+        }
         sortedBins.forEach(bin => {
             html += `<th>${bin}</th>`;
         });
@@ -1057,27 +1116,30 @@ function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count', c
     }
 
     // Table Body - different structure for land use heatmap
-    let lastCategory = ''; // Track category for row grouping display
+    let lastCategory = '';
     sortedClasses.forEach(cls => {
         if (categoryKey === 'land_use_heatmap') {
-            const mapping = landUseMapping[cls] || { category: '', desc: cls, permit: '' };
-            // Only show category name on first row of each category group
-            const showCategory = (mapping.category !== lastCategory);
-            lastCategory = mapping.category;
-            
-            html += '<tr>';
-            // Column 1: Category (only show on first row of group)
-            html += `<td class="row-label" style="background:#f0f4f8; font-weight:${showCategory ? '700' : '400'}; color:${showCategory ? '#2c3e50' : '#999'};">${showCategory ? mapping.category : ''}</td>`;
-            // Column 2: LU Code + Description
-            html += `<td class="row-label" style="background:#f8f9fa; left:100px;"><strong>${cls}</strong>: ${mapping.desc}</td>`;
-            // Column 3: Permit Occupancy Type
-            html += `<td class="row-label" style="background:#f8f9fa; left:300px;">${mapping.permit}</td>`;
+            if (collapseCategory) {
+                // Collapsed view: cls IS the category name
+                html += '<tr>';
+                html += `<td class="row-label" style="background:#f0f4f8; font-weight:700;">${cls}</td>`;
+            } else {
+                // Detailed view: show all 3 columns
+                const mapping = landUseMapping[cls] || { category: '', desc: cls, permit: '' };
+                const showCategory = (mapping.category !== lastCategory);
+                lastCategory = mapping.category;
+                
+                html += '<tr>';
+                html += `<td class="row-label" style="background:#f0f4f8; font-weight:${showCategory ? '700' : '400'}; color:${showCategory ? '#2c3e50' : '#999'};">${showCategory ? mapping.category : ''}</td>`;
+                html += `<td class="row-label" style="background:#f8f9fa; left:100px;"><strong>${cls}</strong>: ${mapping.desc}</td>`;
+                html += `<td class="row-label" style="background:#f8f9fa; left:300px;">${mapping.permit}</td>`;
+            }
         } else {
             html += `<tr><td class="row-label" title="${cls}">${cls}</td>`;
         }
         
         sortedBins.forEach(bin => {
-            const cellObj = heatmapData[cls][bin] || {count: 0, area: 0};
+            const cellObj = displayData[cls]?.[bin] || {count: 0, area: 0};
             const rawVal = (baseMetric === 'area') ? cellObj.area : cellObj.count;
             
             let displayValNum = rawVal;
@@ -1145,9 +1207,8 @@ function createStructureHeatmap(data, binSizeStr, useLog, metricRaw = 'count', c
         <span>${maxLabel}</span>
     </div>`;
 
-    // --- Add Land Use Legend only if relevant ---
-    // Legend is now integrated into the table header, so we just add a note
-    if (categoryKey === 'land_use_heatmap') {
+    // --- Add Land Use note (legend is now integrated into table) ---
+    if (categoryKey === 'land_use_heatmap' && !collapseCategory) {
         html += `<div style="margin-top: 10px; font-size: 0.8em; color: #666; font-style: italic;">
             Note: Empty "Permit Occupancy" cells indicate no direct mapping exists in permit data.
         </div>`;
